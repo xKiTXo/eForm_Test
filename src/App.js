@@ -5,8 +5,11 @@ import {
 } from 'react-router-dom';
 import Layout from './layout/Layout';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import rsuitejs DatePicker component styles 
+import 'rsuite/DatePicker/styles/index.css';
 
 const App = () => {
 
