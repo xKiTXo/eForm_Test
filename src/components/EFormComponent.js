@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import { Tabs, Tab, InputGroup, FormControl, Button, Form, Col, Row } from 'react-bootstrap';
 import { useForm, Controller } from 'react-hook-form';
 import { DatePicker } from 'rsuite';
+import SignatureCanvas from 'react-signature-canvas'
+
 
 const EFormComponent = () => {
+
+    const sigCanvasRef = useRef([]);
+
     const [activeTab, setActiveTab] = useState(1);
 
     const handleTabSelect = (selectedTab) => {
@@ -39,7 +44,18 @@ const EFormComponent = () => {
     };
 
 
+    // useEffect(() => {
+    //     if (sigCanvasRef.current) {
+    //         console.log(sigCanvasRef.current);
+    //     }
+    // }, [sigCanvasRef])
+
+
+
     const tab1 = () => {
+
+
+
         return (
             <div>
                 <h1>合格人員 – 工作前安全會議</h1>
@@ -1331,6 +1347,1686 @@ const EFormComponent = () => {
                         </Form.Group>
                     </Col>
                 </Row>
+
+                {/* 
+                    title is "11. 負責人聯絡方法", have 3 line 
+                    line 1: have 4 columns, list item: 
+                    input element, name is 姓名 
+                    select element, name is 角色 , options list: CP, CP&WPIC, WPIC, Mento
+                    input element, name is 電話/ 手提電話 
+                    input element, name is 無線電對講機 call sign
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formContactMethod">
+                            <Form.Label>11. 負責人聯絡方法</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("contactName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Control as="select" {...register("contactRole")}>
+                                        <option value="CP">CP</option>
+                                        <option value="WPIC">WPIC</option>
+                                        <option value="CPandWPIC">CP&WPIC</option>
+                                        <option value="Mento">Mento</option>
+                                    </Form.Control>
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="電話/ 手提電話"
+                                        {...register("contactPhone")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="無線電對講機 call sign"
+                                        {...register("contactRadioCallSign")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                {/* 
+                    line 2: have 4 columns, list item:
+                    input element with right button (search icon), name is 姓名 , 
+                    select element, name is 角色 , options list: CP, CP&WPIC, WPIC, Mento
+                    input element, name is 電話/ 手提電話 
+                    input element, name is 無線電對講機 call sign
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formContactMethod">
+                            <Row>
+                                <Col>
+                                    <InputGroup className="mb-3">
+                                        <FormControl
+                                            placeholder="姓名"
+                                            {...register("contactName")}
+                                        />
+                                        <Button variant="outline-secondary" id="button-addon3">
+                                            搜尋
+                                        </Button>
+                                    </InputGroup>
+                                </Col>
+                                <Col>
+                                    <Form.Control as="select" {...register("contactRole")}>
+                                        <option value="CP">CP</option>
+                                        <option value="WPIC">WPIC</option>
+                                        <option value="CPandWPIC">CP&WPIC</option>
+                                        <option value="Mento">Mento</option>
+                                    </Form.Control>
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="電話/ 手提電話"
+                                        {...register("contactPhone")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="無線電對講機 call sign"
+                                        {...register("contactRadioCallSign")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+                {/* 
+                    line 3: have 4 columns, list item: 
+                    input element, name is 姓名 
+                    select element, name is 角色 , options list: CP, CP&WPIC, WPIC, Mento
+                    input element, name is 電話/ 手提電話 
+                    input element, name is 無線電對講機 call sign
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formContactMethod">
+                            <Row>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("contactName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Control as="select" {...register("contactRole")}>
+                                        <option value="CP">CP</option>
+                                        <option value="WPIC">WPIC</option>
+                                        <option value="CPandWPIC">CP&WPIC</option>
+                                        <option value="Mento">Mento</option>
+                                    </Form.Control>
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="電話/ 手提電話"
+                                        {...register("contactPhone")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="無線電對講機 call sign"
+                                        {...register("contactRadioCallSign")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                {/* 
+                    title is "12. 工前熱身"
+                    checkbox row list, per line 3 columns
+                    list item: 
+                    有 (with input element, name is "地點:")
+                    沒有 (with input element, name is "原因:")
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formWarmUp">
+                            <Form.Label>12. 工前熱身</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="有"
+                                        {...register("warmUp")}
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="地點"
+                                        {...register("warmUpLocation")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="沒有"
+                                        {...register("warmUpNA")}
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="原因"
+                                        {...register("warmUpReason")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                {/* 
+                    title is "13. 改變控制"
+                    row list, per line 1 columns
+                    list item: 
+                    select element, name is "工作環境改變：", options list: "", 是, 否
+                    input element, name is "對安全/隱患/風險的改變:"
+                    input element, name is "應變行動:"
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formChangeControl">
+                            <Form.Label>13. 改變控制</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Control as="select" {...register("changeControlEnvironment")}>
+                                        <option value=""> </option>
+                                        <option value="yes">是</option>
+                                        <option value="no">否</option>
+                                    </Form.Control>
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="對安全/隱患/風險的改變"
+                                        {...register("changeControlChange")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="應變行動"
+                                        {...register("changeControlAction")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                {/* 
+                    title is "14. 運送濕物料"
+                    checkbox row list, per line 1 columns
+                    list item: 
+                    如須搬運濕的物料 / 塵網，須使同合適之器皿盛載，防止滴水引起之意外
+                    不適用
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formTransportWetMaterial">
+                            <Form.Label>14. 運送濕物料</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="如須搬運濕的物料 / 塵網，須使同合適之器皿盛載，防止滴水引起之意外"
+                                        {...register("transportWetMaterial")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="不適用"
+                                        {...register("transportWetMaterialNA")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                {/* 
+                    title is "15. 檢查梯具"
+                    checkbox row list, per line 1 columns
+                    list item: 
+                    如須使用梯具，使用前必須檢查梯具處於良好狀況
+                    檢查冇過期
+                    不適用
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formCheckLadder">
+                            <Form.Label>15. 檢查梯具</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="如須使用梯具，使用前必須檢查梯具處於良好狀況"
+                                        {...register("checkLadder")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="檢查冇過期"
+                                        {...register("checkLadderExpired")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="不適用"
+                                        {...register("checkLadderNA")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                {/* 
+                    title is "16. 搬運工具"
+                    checkbox row list, per line 1 columns
+                    list item: 
+                    通報站長須搬運工具或物料
+                    如須使用扶手梯搬運，須確保扶手梯於非運作中
+                    不適用
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formTransportTool">
+                            <Form.Label>16. 搬運工具</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="通報站長須搬運工具或物料"
+                                        {...register("transportTool")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="如須使用扶手梯搬運，須確保扶手梯於非運作中"
+                                        {...register("transportToolLadder")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="不適用"
+                                        {...register("transportToolNA")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                {/* 
+                    title is "17. 完工前確認"
+                    checkbox row list, per line 1 columns
+                    list item: 
+                    工作指引(WI)或其他相關的工作表(請註明):
+                    移除紅閃燈時間: (with Datepicker element, type is time)
+                    CPDAS 
+                    離開時間: (with Datepicker element, type is time)
+                    每日工地檢查表 
+                    安全施工檢討記錄
+                    路軌清潔檢查表
+                    路軌使用檢查表
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formConfirmationBeforeCompletion">
+                            <Form.Label>17. 完工前確認</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="工作指引(WI)或其他相關的工作表(請註明)"
+                                        {...register("confirmationBeforeCompletionWI")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>移除紅閃燈時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("confirmationBeforeCompletionRemoveRedLightTime")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="CPDAS"
+                                        {...register("confirmationBeforeCompletionCPDAS")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>離開時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("confirmationBeforeCompletionLeaveTime")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="每日工地檢查表"
+                                        {...register("confirmationBeforeCompletionDailySiteChecklist")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="安全施工檢討記錄"
+                                        {...register("confirmationBeforeCompletionSafetyReviewRecord")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="路軌清潔檢查表"
+                                        {...register("confirmationBeforeCompletionTrackCleaningChecklist")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="路軌使用檢查表"
+                                        {...register("confirmationBeforeCompletionTrackUsageChecklist")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+
+                {/* 
+                    title is "18. 隱患報告"
+                    checkbox row list, per line 1 columns
+                    list item: 
+                    患報告及其他跟進事項: (with input element)
+                    不適用
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formRiskReport">
+                            <Form.Label>18. 隱患報告</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="患報告及其他跟進事項"
+                                        {...register("riskReport")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label="不適用"
+                                        {...register("riskReportNA")}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+
+                {/* 
+                    Row with 2 columns, 
+                    left column: 
+                    title is "工作人員出席紀錄(適用於非軌道及軌道上工作)",
+                    columns list:
+                    input element, 安樂員工編號/安全卡
+                    input element, 姓名
+                    input element, 手提電話
+                    
+                    new Line:
+                    SignatureCanvas, 簽署
+
+                    right column: 
+                    title is "進出軌道紀錄(適用於軌道上工作)"
+                    columns list:
+                    Datepicker element, type is time, 個人進入軌道時間
+                    Datepicker element, type is time, 個人離開軌道時間
+
+                    new Line:
+                    SignatureCanvas, 合格人員簽署
+
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formAttendanceRecord">
+                            <Form.Label>工作人員出席紀錄(適用於非軌道及軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>安樂員工編號/安全卡</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="安樂員工編號/安全卡"
+                                        {...register("attendanceRecordEmployeeID")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>姓名</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("attendanceRecordName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>手提電話</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="手提電話"
+                                        {...register("attendanceRecordPhone")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig1owner'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+
+
+
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>進出軌道紀錄(適用於軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>個人進入軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordEnterTime")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>個人離開軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordLeaveTime")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>合格人員簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig1sir'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                {/* 
+                    Can you write the code based on previous one Row?
+                    duplicate the previous Row, and not need to write the title again
+                    loop 8 times
+                */}
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formAttendanceRecord">
+                            <Form.Label>工作人員出席紀錄(適用於非軌道及軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>安樂員工編號/安全卡</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="安樂員工編號/安全卡"
+                                        {...register("attendanceRecordEmployeeID")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>姓名</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("attendanceRecordName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>手提電話</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="手提電話"
+                                        {...register("attendanceRecordPhone")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig2owner'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>進出軌道紀錄(適用於軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>個人進入軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordEnterTime")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>個人離開軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordLeaveTime")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>合格人員簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig2sir'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formAttendanceRecord">
+                            <Form.Label>工作人員出席紀錄(適用於非軌道及軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>安樂員工編號/安全卡</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="安樂員工編號/安全卡"
+                                        {...register("attendanceRecordEmployeeID")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>姓名</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("attendanceRecordName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>手提電話</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="手提電話"
+                                        {...register("attendanceRecordPhone")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig3owner'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>進出軌道紀錄(適用於軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>個人進入軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordEnterTime")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>個人離開軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordLeaveTime")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>合格人員簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig3sir'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formAttendanceRecord">
+                            <Form.Label>工作人員出席紀錄(適用於非軌道及軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>安樂員工編號/安全卡</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="安樂員工編號/安全卡"
+                                        {...register("attendanceRecordEmployeeID")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>姓名</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("attendanceRecordName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>手提電話</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="手提電話"
+                                        {...register("attendanceRecordPhone")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig4owner'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }
+                                                        }
+                                                    />
+                                                </Col>
+                                            )}
+                                        />} />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>進出軌道紀錄(適用於軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>個人進入軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordEnterTime")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>個人離開軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordLeaveTime")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>合格人員簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig4sir'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formAttendanceRecord">
+                            <Form.Label>工作人員出席紀錄(適用於非軌道及軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>安樂員工編號/安全卡</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="安樂員工編號/安全卡"
+                                        {...register("attendanceRecordEmployeeID")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>姓名</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("attendanceRecordName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>手提電話</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="手提電話"
+                                        {...register("attendanceRecordPhone")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig5owner'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>進出軌道紀錄(適用於軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>個人進入軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordEnterTime")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>個人離開軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordLeaveTime")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>合格人員簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig5sir'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formAttendanceRecord">
+                            <Form.Label>工作人員出席紀錄(適用於非軌道及軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>安樂員工編號/安全卡</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="安樂員工編號/安全卡"
+                                        {...register("attendanceRecordEmployeeID")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>姓名</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("attendanceRecordName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>手提電話</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="手提電話"
+                                        {...register("attendanceRecordPhone")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig6owner'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>進出軌道紀錄(適用於軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>個人進入軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordEnterTime")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>個人離開軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordLeaveTime")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>合格人員簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig6sir'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formAttendanceRecord">
+                            <Form.Label>工作人員出席紀錄(適用於非軌道及軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>安樂員工編號/安全卡</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="安樂員工編號/安全卡"
+                                        {...register("attendanceRecordEmployeeID")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>姓名</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("attendanceRecordName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>手提電話</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="手提電話"
+                                        {...register("attendanceRecordPhone")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig7owner'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>進出軌道紀錄(適用於軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>個人進入軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordEnterTime")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>個人離開軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordLeaveTime")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>合格人員簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig7sir'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Form.Group controlId="formAttendanceRecord">
+                            <Form.Label>工作人員出席紀錄(適用於非軌道及軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>安樂員工編號/安全卡</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="安樂員工編號/安全卡"
+                                        {...register("attendanceRecordEmployeeID")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>姓名</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="姓名"
+                                        {...register("attendanceRecordName")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>手提電話</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="手提電話"
+                                        {...register("attendanceRecordPhone")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig8owner'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>進出軌道紀錄(適用於軌道上工作)</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label>個人進入軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordEnterTime")}
+                                    />
+                                </Col>
+                                <Col>
+                                    <Form.Label>個人離開軌道時間:</Form.Label>
+                                    <Form.Control
+                                        type="time"
+                                        {...register("trackRecordLeaveTime")}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>合格人員簽署</Form.Label>
+                                    <FormControl
+                                        as={() => <Controller
+                                            name='sig8sir'
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Col style={{
+                                                    border: "1px solid black",
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    overflow: "hidden"
+                                                }}>
+                                                    <SignatureCanvas
+                                                        clearOnResize={false}
+                                                        ref={ref => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (!findEl) {
+                                                                sigCanvasRef.current.push({ colName: field.name, ref })
+                                                            }
+                                                        }}
+                                                        onEnd={(e) => {
+                                                            let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                            if (findEl) {
+                                                                findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                                    console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                                })
+                                                            }
+                                                        }}
+                                                    />
+                                                </Col>
+                                            )}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+
+                {/* 
+                    add new 3 line, texts
+                    註一：非安樂員工請填寫有效的建築工人註冊證編號/建造業安全訓練證明書(平安咔)編號。     
+                    如有進/出軌道，完工時須再覆核
+                    ↓ 以下只適用於軌道上工作 ↓                     
+                */}
+                <Row>
+                    <Col xs={12}>
+                        <Form.Label>註一：非安樂員工請填寫有效的建築工人註冊證編號/建造業安全訓練證明書(平安咔)編號。</Form.Label>
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label>如有進/出軌道，完工時須再覆核</Form.Label>
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label>↓ 以下只適用於軌道上工作 ↓</Form.Label>
+                    </Col>
+                </Row>
+
+                {/* 
+                    row columns, 2 columns per line
+                    Datepicker element,type is time, name is 核實撤離軌道時間,
+                    text: 督導覆核,
+                    input element, type is text, name is 合格人員 (CP) 姓名,
+                    input element, type is text, name is 姓名,
+                    input element, type is text, name is 員工編號/職位,
+                    input element, type is text, name is 員工編號/職位,
+                    SignatureCanvas, name is 簽署, ref name is Owner簽署
+                    SignatureCanvas, name is 簽署, ref name is 督導簽署
+                */}
+                <Row>
+                    <Col xs={6}>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>核實撤離軌道時間</Form.Label>
+                            <Form.Control
+                                type="time"
+                                {...register("verifyLeaveTrackTime")}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col xs={6}>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>督導覆核</Form.Label>
+                        </Form.Group>
+                    </Col>
+                    <Col xs={6}>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>合格人員 (CP) 姓名</Form.Label>
+                            <Form.Control
+                                type="text"
+                                {...register("cpName")}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col xs={6}>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>姓名</Form.Label>
+                            <Form.Control
+                                type="text"
+                                {...register("name")}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col xs={6}>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>員工編號/職位</Form.Label>
+                            <Form.Control
+                                type="text"
+                                {...register("employeeID")}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col xs={6}>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>員工編號/職位</Form.Label>
+                            <Form.Control
+                                type="text"
+                                {...register("employeeID")}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col xs={6}>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>簽署</Form.Label>
+                            <FormControl
+                                as={() => <Controller
+                                    name='ownerSig'
+                                    control={control}
+                                    render={({ field }) => (
+                                        <Col style={{
+                                            border: "1px solid black",
+                                            width: "200px",
+                                            height: "100px",
+                                            overflow: "hidden"
+                                        }}>
+                                            <SignatureCanvas
+                                                clearOnResize={false}
+                                                ref={ref => {
+                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                    if (!findEl) {
+                                                        sigCanvasRef.current.push({ colName: field.name, ref })
+                                                    }
+                                                }}
+                                                onEnd={(e) => {
+                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                    if (findEl) {
+                                                        findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                            console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                        })
+                                                    }
+                                                }}
+                                            />
+                                        </Col>
+                                    )}
+                                />}
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col xs={6}>
+                        <Form.Group controlId="formTrackRecord">
+                            <Form.Label>簽署</Form.Label>
+                            <FormControl
+                                as={() => <Controller
+                                    name='supervisorSig'
+                                    control={control}
+                                    render={({ field }) => (
+                                        <Col style={{
+                                            border: "1px solid black",
+                                            width: "200px",
+                                            height: "100px",
+                                            overflow: "hidden"
+                                        }}>
+                                            <SignatureCanvas
+                                                clearOnResize={false}
+                                                ref={ref => {
+                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                    if (!findEl) {
+                                                        sigCanvasRef.current.push({ colName: field.name, ref })
+                                                    }
+                                                }}
+                                                onEnd={(e) => {
+                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                    if (findEl) {
+                                                        findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
+                                                            console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
+
+                                                        })
+                                                    }
+                                                }}
+                                            />
+                                        </Col>
+                                    )}
+                                />}
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
+
 
 
             </div>
