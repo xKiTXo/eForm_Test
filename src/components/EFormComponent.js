@@ -31,6 +31,12 @@ const EFormComponent = () => {
             case tabNames[1]: {
                 return tab2();
             }
+            case tabNames[2]: {
+                return tab3();
+            }
+            case tabNames[3]: {
+                return tab4();
+            }
 
         }
     };
@@ -3445,6 +3451,542 @@ const EFormComponent = () => {
     }
 
 
+    // create tab3
+    const { register: registerTab3, handleSubmit: handleSubmitTab3, control: controlTab3 } = useForm();
+    const rowListForTab3 = [
+        {
+            title: "工地整理(開工前)",
+            field: "siteTidinessBeforeWork",
+            list: [
+                {
+                    label: "工作前風險評估?",
+                    value: "riskAssessment"
+                },
+                {
+                    label: "物料擺放位置/高度?",
+                    value: "materialPlacement"
+                },
+                {
+                    label: "通道?",
+                    value: "passage"
+                },
+                {
+                    label: "電線固定/高掛使用?",
+                    value: "wireFixation"
+                },
+                {
+                    label: "通風?",
+                    value: "ventilation"
+                },
+                {
+                    label: "照明?",
+                    value: "lighting"
+                },
+            ]
+        },
+        {
+            title: "個人防護器具",
+            field: "personalProtectiveEquipment",
+            list: [
+                {
+                    label: "安全帽?",
+                    value: "safetyHelmet"
+                },
+                {
+                    label: "安全鞋?",
+                    value: "safetyShoes"
+                },
+                {
+                    label: "反光衣?",
+                    value: "reflectiveVest"
+                },
+                {
+                    label: "手套?",
+                    value: "gloves"
+                },
+                {
+                    label: "護目鏡?",
+                    value: "goggles"
+                },
+                {
+                    label: "全身式安全帶連救生繩防墮扣?",
+                    value: "fullBodySafetyBeltWithRescueRope"
+                }
+            ]
+        },
+        // add new item, 急救箱
+        {
+            title: "急救箱",
+            field: "firstAidKit",
+            list: [
+                {
+                    label: "外殼破損?",
+                    value: "shellDamage"
+                },
+                {
+                    label: "檢查人員/急救員資料?",
+                    value: "personnel"
+                },
+                {
+                    label: "小冊子/每月檢查記錄?",
+                    value: "booklet"
+                },
+                {
+                    label: "急救箱物料數量/有效期?",
+                    value: "quantity"
+                }
+            ]
+        },
+        // 梯具
+        {
+            title: "梯具",
+            field: "ladder",
+            list: [
+                {
+                    label: "外殼或外觀是否安全使用?",
+                    value: "ladderAppearance"
+                },
+                {
+                    label: "破損?",
+                    value: "ladderDamage"
+                },
+                {
+                    label: "檢查標籤?",
+                    value: "checkLabel"
+                },
+                {
+                    label: "不適當使用?",
+                    value: "inappropriateUse"
+                },
+            ]
+        },
+        // 手工具
+        {
+            title: "手工具",
+            field: "handTools",
+            list: [
+                {
+                    label: "破損?",
+                    value: "damage"
+                },
+                {
+                    label: "私自改裝?",
+                    value: "unauthorizedModification"
+                },
+            ]
+        },
+        // 電工具
+        {
+            title: "電工具",
+            field: "powerTools",
+            list: [
+                {
+                    label: "外殼或外觀是否安全使用?",
+                    value: "ladderAppearance"
+                },
+                {
+                    label: "外殼破損?",
+                    value: "shellDamage"
+                },
+                {
+                    label: "電線破損/不合適電線?",
+                    value: "wireDamage"
+                },
+                {
+                    label: "功能正常?",
+                    value: "functionNormal"
+                },
+                {
+                    label: "電線抽插頭?",
+                    value: "plug"
+                },
+                {
+                    label: "檢查標籤?",
+                    value: "checkLabel"
+                },
+            ]
+        },
+        // 熱工序
+        {
+            title: "熱工序",
+            field: "hotWork",
+            list: [
+                {
+                    label: "已填寫熱工序許可証?",
+                    value: "hotWorkPermit"
+                },
+                {
+                    label: "已放置滅火設備?",
+                    value: "fireEquipment"
+                },
+                {
+                    label: "已定期檢查焊接工具?",
+                    value: "regularInspection"
+                },
+            ]
+        },
+        // 密閉空間工作
+        {
+            title: "密閉空間工作",
+            field: "confinedSpaceWork",
+            list: [
+                {
+                    label: "已填寫密閉空間風險評估?",
+                    value: "confinedSpaceRiskAssessment"
+                },
+                {
+                    label: "已填寫密閉空間許可証?",
+                    value: "confinedSpacePermit"
+                },
+                {
+                    label: "已定期檢查密閉空間設備?",
+                    value: "regularInspection"
+                },
+            ]
+        },
+        // 滅火筒
+        {
+            title: "滅火筒",
+            field: "fireExtinguisher",
+            list: [
+                {
+                    label: "破損?",
+                    value: "damage"
+                },
+                {
+                    label: "使用類型?",
+                    value: "fireExtinguisherType"
+                },
+                {
+                    label: "壓力?",
+                    value: "pressure"
+                },
+                {
+                    label: "有效期?",
+                    value: "expiryDate"
+                },
+            ]
+        },
+        // 棚架
+        {
+            title: "棚架",
+            field: "scaffold",
+            list: [
+                {
+                    label: "破損?",
+                    value: "damage"
+                },
+                {
+                    label: "通道/圍欄/踢腳板?",
+                    value: "passageFenceKickboard"
+                },
+                {
+                    label: "表格 5 有效期?",
+                    value: "form5ExpiryDate"
+                },
+                {
+                    label: "棚格圖紙?",
+                    value: "scaffoldDrawing"
+                },
+            ]
+        },
+        // 收工前清掃
+        {
+            title: "收工前清掃",
+            field: "cleanUpBeforeWork",
+            list: [
+                {
+                    label: "物料擺放位置/高度?",
+                    value: "materialPlacement"
+                },
+                {
+                    label: "通道?",
+                    value: "passage"
+                },
+                {
+                    label: "孔洞/電線槽覆蓋/標示?",
+                    value: "holeCovering"
+                },
+                {
+                    label: "工具放回原處?",
+                    value: "toolReturn"
+                },
+                {
+                    label: "已清理垃圾桶內垃圾?",
+                    value: "cleanGarbage"
+                },
+            ]
+        },
+        // 最後檢查
+        {
+            title: "最後檢查",
+            field: "finalCheck",
+            list: [
+                {
+                    label: "清潔工作做妥?",
+                    value: "cleanWork"
+                },
+                {
+                    label: "所有火種熄滅?",
+                    value: "checkAllFire"
+                },
+                {
+                    label: "所有電工具電線拔掉及儲存好?",
+                    value: "checkAllPowerTools"
+                },
+                {
+                    label: "剩餘物料已擺放妥當?",
+                    value: "checkAllMaterial"
+                },
+                {
+                    label: "所有員工已離開工地?",
+                    value: "checkAllEmployee"
+                },
+                {
+                    label: "電掣閉妥?",
+                    value: "checkAllSwitch"
+                },
+            ]
+        },
+    ]
+    const checkPointListForTab3 = [
+        {
+            title: "開工前",
+            field: "beforeWork",
+            list: [
+                {
+                    label: "正常",
+                    value: "normal"
+                },
+                {
+                    label: "需改善",
+                    value: "needToImprove"
+                },
+                {
+                    label: "不適用",
+                    value: "notApplicable"
+                }
+            ]
+        },
+        {
+            title: "中午飯後",
+            field: "afterLunch",
+            list: [
+                {
+                    label: "正常",
+                    value: "normal"
+                },
+                {
+                    label: "需改善",
+                    value: "needToImprove"
+                },
+                {
+                    label: "不適用",
+                    value: "notApplicable"
+                }
+            ]
+        }
+    ]
+    const tab3 = () => {
+        return (
+            <form onSubmit={handleSubmitTab3(onSubmit)}>
+                <Button type='submit'>Submit</Button>
+                <div>
+                    <Row>
+                        <Col xs={12}>
+                            <Form.Label>每日工地檢查表</Form.Label>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12}>
+                            <Form.Group>
+                                <Form.Label>工作位置:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    {...registerTab3("workLocation")}
+                                />
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12}>
+                            <Table className="table">
+                                <tbody>
+                                    <tr>
+                                        <td>项目</td>
+                                        {checkPointListForTab3.map((item, index) => {
+                                            return (
+                                                <td key={index}>{item.title}</td>
+                                            )
+                                        })}
+                                    </tr>
+
+
+
+                                    {rowListForTab3.map((rows, rowIndex) => {
+                                        return rows?.list.map((item, index) => {
+                                            return <>
+                                                {index === 0 ? <tr key={index}>
+                                                    <p style={{ marginBottom: '8px', marginTop: "16px" }}>
+                                                        {rows?.title}
+                                                    </p>
+                                                </tr> : null}
+                                                <tr
+                                                    key={index}
+                                                >
+                                                    <td>
+                                                        <Form.Label>{item?.label}</Form.Label>
+                                                    </td>
+                                                    {checkPointListForTab3.map((checkPoint, index) => {
+                                                        return <td key={index}>
+                                                            {checkPoint?.list.map((checkPointItem, index) => {
+
+                                                                return (
+                                                                    <Form.Check
+                                                                        inline
+                                                                        key={index}
+                                                                        type="radio"
+                                                                        label={checkPointItem?.label}
+                                                                        value={checkPointItem?.value}
+                                                                        {...registerTab3(`${rows?.field}.${item?.value}.${checkPoint?.field}`, {
+                                                                            // value: checkPointItem?.value,
+                                                                            // onChange: (e) => {
+                                                                            //     console.log("file: EFormComponent.js:3582 -> {checkPoint?.list.map -> e:", e.target.value)
+                                                                            // }
+                                                                        })}
+                                                                    />
+                                                                )
+                                                            })}
+                                                        </td>
+                                                    })}
+                                                </tr>
+                                            </>
+                                        })
+                                    })}
+
+                                    <tr>
+                                        <td colSpan={3}>
+                                            <Form.Group>
+                                                <Form.Label>跟進建議：</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    {...registerTab3("suggestions")}
+                                                />
+                                            </Form.Group>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <Form.Label>Date*(日期):</Form.Label>
+                                            <Form.Control
+                                                type="date"
+                                                {...registerTab3("Date")}
+                                            />
+                                        </td>
+                                        <td>
+                                            <Form.Label>Competent person(合格人士)</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                {...registerTab3("CompetentPerson")}
+                                            />
+                                        </td>
+                                        <td>
+                                            <Form.Label>Signature(簽名)</Form.Label>
+                                            <Form.Control
+                                                as={() => <Controller
+                                                    name='sig9owner'
+                                                    control={controlTab3}
+                                                    render={({ field }) => (
+                                                        <Col style={{
+                                                            border: "1px solid black",
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            overflow: "hidden"
+                                                        }}>
+                                                            <SignatureCanvas
+                                                                clearOnResize={false}
+                                                                ref={ref => {
+                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                                    if (!findEl) {
+                                                                        sigCanvasRef.current.push({ colName: field.name, ref })
+                                                                    }
+                                                                }}
+                                                                onEnd={() => {
+                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                                    if (findEl) {
+                                                                        console.log("file: EFormComponent.js:3415 -> tab2 -> findEl:", findEl)
+                                                                        console.log("file: EFormComponent.js:3418 -> findEl.ref.getCanvas -> findEl.ref.getSignaturePad():", findEl.ref.getSignaturePad())
+                                                                        if (findEl?.ref && findEl.ref?.getSignaturePad()) {
+                                                                            let data = findEl.ref.getSignaturePad()?.toDataURL()
+                                                                            console.log("file: EFormComponent.js:3419 -> tab2 -> data:", data)
+                                                                        }
+                                                                    }
+                                                                }}
+                                                            />
+                                                        </Col>
+                                                    )}
+                                                />}
+                                            />
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
+                    </Row>
+                </div>
+            </form>
+        );
+    }
+
+    // tab4
+    const { register: registerTab4, handleSubmit: handleSubmitTab4, control: controlTab4 } = useForm();
+    const rowListForTab4 = [
+    ]
+    const tab4 = () => {
+        return (
+            <form onSubmit={handleSubmitTab4(onSubmit)}>
+                <Button type='submit'>Submit</Button>
+                <div>
+                    <Row>
+                        <Col xs={12}>
+                            <Form.Label>每日工地檢查表</Form.Label>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12}>
+                            <Table className="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <Form.Group>
+                                                <Form.Label>工作位置:</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    {...registerTab4("workLocation")}
+                                                />
+                                            </Form.Group>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <Form.Group>
+                                                <Form.Label>工作位置:</Form.Label>
+                                                <Form.Control
+                                                    type="text"
+                                                    {...registerTab4("workLocation")}
+                                                />
+                                            </Form.Group>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
+                    </Row>
+                </div>
+            </form>
+        );
+    }
 
     return (
         <div>
