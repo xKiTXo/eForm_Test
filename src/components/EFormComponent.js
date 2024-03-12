@@ -37,6 +37,9 @@ const EFormComponent = () => {
             case tabNames[3]: {
                 return tab4();
             }
+            case tabNames[4]: {
+                return tab5();
+            }
 
         }
     };
@@ -104,7 +107,7 @@ const EFormComponent = () => {
                                 <Form.Label>工作地點</Form.Label>
                                 <Form.Select {...registerTab1("workLocation")}>
                                     {options.map((option, index) => (
-                                        <option key={index} value={option}>
+                                        <option key={option + index} value={option}>
                                             {option}
                                         </option>
                                     ))}
@@ -3309,7 +3312,7 @@ const EFormComponent = () => {
                                 <thead>
                                     <tr>
                                         {uiListForTab2.map((item, index) => (
-                                            <th key={index}>{item.label}</th>
+                                            <th key={item.label + index}>{item.label}</th>
                                         ))}
                                     </tr>
                                 </thead>
@@ -3330,13 +3333,13 @@ const EFormComponent = () => {
                                 <tbody>
                                     {rowListForTab2.map((rows, index) => (
                                         <tr
-                                            key={index}
+                                            key={rows.field + index}
                                         >
                                             <td>{rows.Hazards}</td>
                                             <td>
                                                 {rows.SafetyPrecautionaryMeasures.map((item, index) => (
                                                     <Form.Check
-                                                        key={index}
+                                                        key={item.label + index}
                                                         type="checkbox"
                                                         label={item?.label}
                                                         {...registerTab2(`${rows?.field}.${item?.value}`)}
@@ -3346,7 +3349,7 @@ const EFormComponent = () => {
                                             <td>
                                                 {rows.Actions.map((item, index) => (
                                                     <Form.Check
-                                                        key={index}
+                                                        key={item.label + index}
                                                         type="checkbox"
                                                         label={item?.label}
                                                         {...registerTab2(`${rows?.field}.${item?.value}`)}
@@ -3816,7 +3819,7 @@ const EFormComponent = () => {
                                         <td>项目</td>
                                         {checkPointListForTab3.map((item, index) => {
                                             return (
-                                                <td key={index}>{item.title}</td>
+                                                <td key={item.title + index}>{item.title}</td>
                                             )
                                         })}
                                     </tr>
@@ -3825,26 +3828,25 @@ const EFormComponent = () => {
 
                                     {rowListForTab3.map((rows, rowIndex) => {
                                         return rows?.list.map((item, index) => {
-                                            return <>
+                                            return <React.Fragment key={item.label + index}>
                                                 {index === 0 ? <tr key={index}>
-                                                    <p style={{ marginBottom: '8px', marginTop: "16px" }}>
-                                                        {rows?.title}
-                                                    </p>
+                                                    <td colSpan={5}>
+                                                        <Form.Label style={{ marginBottom: '8px', marginTop: "16px" }}>
+                                                            {rows?.title}
+                                                        </Form.Label>
+                                                    </td>
                                                 </tr> : null}
-                                                <tr
-                                                    key={index}
-                                                >
+                                                <tr>
                                                     <td>
                                                         <Form.Label>{item?.label}</Form.Label>
                                                     </td>
                                                     {checkPointListForTab3.map((checkPoint, index) => {
-                                                        return <td key={index}>
+                                                        return <td key={checkPoint.title + index}>
                                                             {checkPoint?.list.map((checkPointItem, index) => {
-
                                                                 return (
                                                                     <Form.Check
                                                                         inline
-                                                                        key={index}
+                                                                        key={checkPointItem.label + index}
                                                                         type="radio"
                                                                         label={checkPointItem?.label}
                                                                         value={checkPointItem?.value}
@@ -3860,7 +3862,7 @@ const EFormComponent = () => {
                                                         </td>
                                                     })}
                                                 </tr>
-                                            </>
+                                            </React.Fragment>
                                         })
                                     })}
 
@@ -3942,15 +3944,157 @@ const EFormComponent = () => {
     // tab4
     const { register: registerTab4, handleSubmit: handleSubmitTab4, control: controlTab4 } = useForm();
     const rowListForTab4 = [
+        {
+            num: "1.1",
+            title: "燈光不足",
+            field: "insufficientLighting",
+        },
+        // 高空工作違規
+        {
+            num: "1.2",
+            title: "高空工作違規",
+            field: "highAltitudeWorkViolation",
+        },
+        // 吊運工作違規
+        {
+            num: "1.3",
+            title: "吊運工作違規",
+            field: "hoistingWorkViolation",
+        },
+        // 阻礙進出通道
+        {
+            num: "1.4",
+            title: "阻礙進出通道",
+            field: "obstructingAccess",
+        },
+        // 地盤整理欠佳
+        {
+            num: "1.5",
+            title: "地盤整理欠佳",
+            field: "poorSiteTidiness",
+        },
+        // 防火措施不足
+        {
+            num: "1.6",
+            title: "防火措施不足",
+            field: "insufficientFirePrecautions",
+        },
+        // 發現手工具損壞
+        {
+            num: "1.7",
+            title: "發現手工具損壞",
+            field: "findHandToolDamage",
+        },
+        // 發現電工具損壞
+        {
+            num: "1.8",
+            title: "發現電工具損壞",
+            field: "findPowerToolDamage",
+        },
+        // 不遵從安全意見改善
+        {
+            num: "1.9",
+            title: "不遵從安全意見改善",
+            field: "notFollowSafetyImprovementSuggestions",
+        },
+        // 發現電線拖地; 使用的電線損壞
+        {
+            num: "1.10",
+            title: "發現電線拖地; 使用的電線損壞",
+            field: "findWireDragDamage",
+        },
+        // 沒有正確使用合規格的個人防護裝備
+        {
+            num: "1.11",
+            title: "沒有正確使用合規格的個人防護裝備",
+            field: "notUsingCompliantPPE",
+        },
     ]
+    const checkPointListForTab4 = [
+        {
+            field: "todaySafetyPerformance",
+            type: "checkbox",
+            label: "有",
+            value: "yes"
+        },
+        {
+            field: "todaySafetyPerformance",
+            type: "checkbox",
+            label: "沒有",
+            value: "no"
+        },
+        {
+            field: "todaySafetyPerformance",
+            type: "checkbox",
+            label: "不適用",
+            value: "notApplicable"
+        },
+        {
+            field: "responsiblePerson",
+            type: "input",
+            label: "負責人士",
+        }
+
+    ]
+    // write the function handleCheckPointListForTab4 For checkPointListForTab4
+    // to generate the UI though properties "type" of per item
+    // use switch case to handle the type
+    const handleCheckPointListForTab4 = (rows, item) => {
+        switch (item.type) {
+            case "checkbox":
+                return (
+                    <Col>
+                        <Form.Check
+                            type="radio"
+                            label={item.label}
+                            value={item.value}
+                            {...registerTab4(`${rows.field}.${[item.field]}`)}
+                        />
+                    </Col>
+                );
+            case "input":
+                return (
+                    <Col>
+                        <Form.Control
+                            type="text"
+                            placeholder={item.label}
+                            {...registerTab4(`${rows.field}.${[item.field]}`)}
+                        />
+                    </Col>
+                );
+            default:
+                return null;
+        }
+
+    }
     const tab4 = () => {
         return (
             <form onSubmit={handleSubmitTab4(onSubmit)}>
                 <Button type='submit'>Submit</Button>
                 <div>
                     <Row>
-                        <Col xs={12}>
+                        <Col xs={4}>
                             <Form.Label>每日工地檢查表</Form.Label>
+                        </Col>
+                        <Col xs={4}>
+                            {/* 
+                               input element , name is 地盤:
+                            */}
+                            <Form.Label>地盤:</Form.Label>
+                            <Form.Control
+                                type="text"
+                                {...registerTab4("site")}
+                            />
+                        </Col>
+                        <Col xs={4}>
+                            {/* 
+                               input element , name is 日期:
+                            */}
+                            <Form.Label>日期:</Form.Label>
+                            <Form.Control
+                                type="date"
+                                {...registerTab4("date")}
+                            />
                         </Col>
                     </Row>
                     <Row>
@@ -3958,27 +4102,150 @@ const EFormComponent = () => {
                             <Table className="table">
                                 <tbody>
                                     <tr>
+                                        <td>項目</td>
+                                        <td colSpan={3}>重點記錄</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan={3}>***1</td>
+                                        <td></td>
+                                        <td colSpan={1}>
+                                            今天安全表現:
+                                        </td>
+                                    </tr>
+
+                                    {
+                                        rowListForTab4.map((rows, index) => {
+                                            return (
+                                                <tr key={rows.title + index}>
+                                                    <td>{rows?.num}</td>
+                                                    <td colSpan={3}>{rows?.title}</td>
+                                                    <td>
+                                                        {checkPointListForTab4.map((item, index) => {
+                                                            return <Row key={item.label + index}>
+                                                                {handleCheckPointListForTab4(rows, item)}
+                                                            </Row>
+                                                        })}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                    <tr>
+                                        <td colSpan={3}>1.12</td>
                                         <td>
-                                            <Form.Group>
-                                                <Form.Label>工作位置:</Form.Label>
-                                                <Form.Control
-                                                    type="text"
-                                                    {...registerTab4("workLocation")}
-                                                />
-                                            </Form.Group>
+                                            其他:
+                                            <Form.Control
+                                                type="text"
+                                                {...registerTab4("other.text")} />
+                                        </td>
+                                        <td>
+                                            {checkPointListForTab4.map((item, index) => {
+                                                return <Row key={item.label + index}>
+                                                    {handleCheckPointListForTab4({ field: "other" }, item)}
+                                                </Row>
+                                            })}
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td colSpan={3}>1.13</td>
                                         <td>
-                                            <Form.Group>
-                                                <Form.Label>工作位置:</Form.Label>
-                                                <Form.Control
-                                                    type="text"
-                                                    {...registerTab4("workLocation")}
-                                                />
-                                            </Form.Group>
+                                            其他:
+                                            <Form.Control
+                                                type="text"
+                                                {...registerTab4("other2.text")} />
+                                        </td>
+                                        <td>
+                                            {checkPointListForTab4.map((item, index) => {
+                                                return <Row key={item.label + index}>
+                                                    {handleCheckPointListForTab4({ field: "other2" }, item)}
+                                                </Row>
+                                            })}
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td colSpan={3}>1.14</td>
+                                        <td>
+                                            其他:
+                                            <Form.Control
+                                                type="text"
+                                                {...registerTab4("other3.text")} />
+                                        </td>
+                                        <td>
+                                            {checkPointListForTab4.map((item, index) => {
+                                                return <Row key={item.label + index}>
+                                                    {handleCheckPointListForTab4({ field: "other3" }, item)}
+                                                </Row>
+                                            })}
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colSpan={5}>
+                                            <Form.Label>2. 明天需跟進事項:</Form.Label>
+                                            <Form.Control
+                                                type="textarea"
+                                                rows={3}
+                                                {...registerTab4("tomorrowFollowUp")}
+                                            />
+                                        </td>
+                                    </tr>
+
+                                    {/* 
+                                        new line, rows,
+                                        input element , name is 合格人員姓名:
+                                        input element , name is 合格人員簽署：
+                                    */}
+                                    <tr>
+                                        <td >
+                                            <Form.Label>合格人員姓名:</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                {...registerTab4("qualifiedPersonnelName")}
+                                            />
+                                        </td>
+                                        <td colSpan={3}>
+                                            <Form.Label>合格人員簽署:</Form.Label>
+                                            <Form.Control
+                                                as={() => <Controller
+                                                    name='sig9owner'
+                                                    control={controlTab4}
+                                                    render={({ field }) => (
+                                                        <Col style={{
+                                                            border: "1px solid black",
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            overflow: "hidden"
+                                                        }}>
+                                                            <SignatureCanvas
+                                                                clearOnResize={false}
+                                                                ref={ref => {
+                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                                    if (!findEl) {
+                                                                        sigCanvasRef.current.push({ colName: field.name, ref })
+                                                                    }
+                                                                }}
+                                                                onEnd={() => {
+                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                                    if (findEl) {
+                                                                        console.log("file: EFormComponent.js:3415 -> tab2 -> findEl:", findEl)
+                                                                        console.log("file: EFormComponent.js:3418 -> findEl.ref.getCanvas -> findEl.ref.getSignaturePad():", findEl.ref.getSignaturePad())
+                                                                        if (findEl?.ref && findEl.ref?.getSignaturePad()) {
+                                                                            let data = findEl.ref.getSignaturePad()?.toDataURL()
+                                                                            console.log("file: EFormComponent.js:3419 -> tab2 -> data:", data)
+                                                                        }
+                                                                    }
+                                                                }}
+                                                            />
+                                                        </Col>
+                                                    )}
+                                                />}
+                                            />
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
                                 </tbody>
                             </Table>
                         </Col>
@@ -3988,13 +4255,291 @@ const EFormComponent = () => {
         );
     }
 
+
+    // tab5
+    const { register: registerTab5, handleSubmit: handleSubmitTab5, control: controlTab5 } = useForm();
+    const tab5List = [
+        {
+            title: "開工前",
+            field: "beforeWork",
+            list: [
+                {
+                    label: "已呈交檢查申請表格及工作申請",
+                    value: "inspectionApplicationForm"
+                },
+                {
+                    label: "已有批核的施工方案",
+                    value: "approvedConstructionPlan"
+                },
+                {
+                    label: "已用中文向工人講解施工方案及施工前因應已評估風險所需安全措施的安排",
+                    value: "chineseConstructionPlan"
+                },
+                {
+                    label: "已向值日站長(車站)/調車地主管(車廠】報告工作詳情,工作隊,工作地點和時段及獲批准開工",
+                    value: "reportWorkDetails"
+                },
+                {
+                    label: "批准工人開工前,已提供及確保所有安全設備及措施齊備",
+                    value: "provideSafetyEquipment"
+                },
+                {
+                    label: "於檢查以上項目1-5後,已通知當值工務督察開始施工",
+                    value: "notifyDutyInspector"
+                },
+            ]
+        },
+        {
+            title: "施工期間",
+            field: "duringConstruction",
+            list: [
+                {
+                    label: "施工時發現的不安全/不當行為及/或與施工方案/圖則/規格的偏差已修正",
+                    value: "unsafeBehavior"
+                },
+                {
+                    label: "於當值工務督察巡查時發現的不當行為/偏差事項已修正",
+                    value: "dutyInspector"
+                },
+                {
+                    label: "完工後的清掃及安全檢查已完成",
+                    value: "cleaning"
+                }
+            ]
+        },
+        {
+            title: "完工後",
+            field: "afterCompletion",
+            list: [
+                {
+                    label: "已邀請值日站長(車站)/調車場主管(車廠》共同視察工地",
+                    value: "inviteDutyInspector"
+                },
+                {
+                    label: "為即時跟進不當行為/偏差事項,已作出特別安排",
+                    value: "followUp"
+                },
+                {
+                    label: "已通知當值工務督察完工( 於現場通知/ 用電話通知)",
+                    value: "notifyDutyInspector"
+                }
+            ]
+        }
+    ];
+    const tab5 = () => {
+        return (
+            <form onSubmit={handleSubmitTab5(onSubmit)}>
+                <Button type='submit'>Submit</Button>
+                <div>
+                    <Row>
+                        <Col xs={12}>
+                            <Form.Label>合格人員職責執行表格(CPDAS)</Form.Label>
+                        </Col>
+                        <Col xs={12}>
+                            <Form.Label>合約編號及名稱:  M1172-18E</Form.Label>
+                        </Col>
+                        <Col xs={12}>
+                            <Form.Label>承辦商: ATAL Building Services Engineering Ltd.</Form.Label>
+                        </Col>
+                        <Col xs={6}>
+                            <Form.Group>
+                                <Form.Label>日期:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    {...registerTab5("date")}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col xs={6}>
+                            <Form.Group>
+                                <Form.Label>時間:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    {...registerTab5("time")}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col xs={6}>
+                            <Form.Group>
+                                <Form.Label>工地:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    {...registerTab5("site")}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col xs={12}>
+                            <Form.Label>檢查項目</Form.Label>
+                        </Col>
+                        <Col xs={12}>
+                            <Form.Label>(結果: Y=是 / N=否 / NA=不適用)</Form.Label>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12}>
+                            <Table className="table">
+                                <tbody>
+                                    {tab5List.map((rows, index) => {
+                                        return rows?.list.map((item, index) => {
+                                            return (
+                                                <React.Fragment key={item.label + index}>
+                                                    {index === 0 ? <tr >
+                                                        <td colSpan={5}>
+                                                            {rows.title}
+                                                        </td>
+                                                    </tr> : null}
+                                                    <tr >
+                                                        <td>{item?.label}</td>
+                                                        <td>
+                                                            <Form.Check
+                                                                type="radio"
+                                                                label="Y"
+                                                                value="Y"
+                                                                {...registerTab5(`${rows.field}.${item?.value}`)}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <Form.Check
+                                                                type="radio"
+                                                                label="N"
+                                                                value="N"
+                                                                {...registerTab5(`${rows.field}.${item?.value}`)}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <Form.Check
+                                                                type="radio"
+                                                                label="NA"
+                                                                value="NA"
+                                                                {...registerTab5(`${rows.field}.${item?.value}`)}
+                                                            />
+                                                        </td>
+                                                    </tr>
+                                                </React.Fragment>
+                                            )
+                                        })
+                                    })}
+                                </tbody>
+                            </Table>
+                        </Col>
+                        <Row>
+                            <Col xs={6}>
+                                <Form.Label>合格人員姓名及簽署:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    {...registerTab5("qualifiedPersonnel")}
+                                />
+                            </Col>
+                            <Col xs={6}>
+                                <Form.Control
+                                    as={() => <Controller
+                                        name='qualifiedPersonnelSig'
+                                        control={controlTab5}
+                                        render={({ field }) => (
+                                            <Col style={{
+                                                border: "1px solid black",
+                                                width: "200px",
+                                                height: "100px",
+                                                overflow: "hidden"
+                                            }}>
+                                                <SignatureCanvas
+                                                    clearOnResize={false}
+                                                    ref={ref => {
+                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                        if (!findEl) {
+                                                            sigCanvasRef.current.push({ colName: field.name, ref })
+                                                        }
+                                                    }}
+                                                    onEnd={() => {
+                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                        if (findEl) {
+                                                            console.log("file: EFormComponent.js:3415 -> tab2 -> findEl:", findEl)
+                                                            console.log("file: EFormComponent.js:3418 -> findEl.ref.getCanvas -> findEl.ref.getSignaturePad():", findEl.ref.getSignaturePad())
+                                                            if (findEl?.ref && findEl.ref?.getSignaturePad()) {
+                                                                let data = findEl.ref.getSignaturePad()?.toDataURL()
+                                                                console.log("file: EFormComponent.js:3419 -> tab2 -> data:", data)
+                                                            }
+                                                        }
+                                                    }}
+                                                />
+                                            </Col>
+                                        )}
+                                    />}
+                                />
+                            </Col>
+                        </Row>
+
+                        {/*
+                            工務督察姓名及簽署(*)
+                        */}
+                        <Row>
+                            <Col xs={6}>
+                                <Form.Label>工務督察姓名及簽署:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    {...registerTab5("inspector")}
+                                />
+                            </Col>
+                            <Col xs={6}>
+                                <Form.Control
+                                    as={() => <Controller
+                                        name='inspectorSig'
+                                        control={controlTab5}
+                                        render={({ field }) => (
+                                            <Col style={{
+                                                border: "1px solid black",
+                                                width: "200px",
+                                                height: "100px",
+                                                overflow: "hidden"
+                                            }}>
+                                                <SignatureCanvas
+                                                    clearOnResize={false}
+                                                    ref={ref => {
+                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                        if (!findEl) {
+                                                            sigCanvasRef.current.push({ colName: field.name, ref })
+                                                        }
+                                                    }}
+                                                    onEnd={() => {
+                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
+                                                        if (findEl) {
+                                                            console.log("file: EFormComponent.js:3415 -> tab2 -> findEl:", findEl)
+                                                            console.log("file: EFormComponent.js:3418 -> findEl.ref.getCanvas -> findEl.ref.getSignaturePad():", findEl.ref.getSignaturePad())
+                                                            if (findEl?.ref && findEl.ref?.getSignaturePad()) {
+                                                                let data = findEl.ref.getSignaturePad()?.toDataURL()
+                                                                console.log("file: EFormComponent.js:3419 -> tab2 -> data:", data)
+                                                            }
+                                                        }
+                                                    }}
+                                                />
+                                            </Col>
+                                        )}
+                                    />}
+                                />
+                            </Col>
+                        </Row>
+
+                        <Col xs={12}>
+                            <Form.Label>備註:*如項目的檢查結果為"N",合格人員需先修正及在此記錄詳情方可繼續。</Form.Label>
+                        </Col>
+                        <Col xs={12}>
+                            <Form.Label>(#)因應工作需要的工作許可證例如:工作許可證(電氣)/(機械)/(熱作)/鎖探/連接工程許可證</Form.Label>
+                        </Col>
+                        <Col xs={12}>
+                            <Form.Label>(*)如於完工前離開工地,工務督察須於簽署後記錄離開時。</Form.Label>
+                        </Col>
+                    </Row>
+                </div>
+            </form>
+        )
+    }
+
+
     return (
         <div>
-
-
             <Tabs activeKey={activeTab} onSelect={handleTabSelect}>
                 {tabNames.map((tabName, index) => (
-                    <Tab key={index} eventKey={index + 1} title={`${tabName}`}>
+                    <Tab key={tabName + index} eventKey={index + 1} title={`${tabName}`}>
                         {handleFormPage(tabName)}
                     </Tab>
                 ))}
