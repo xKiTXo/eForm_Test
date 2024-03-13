@@ -1,13 +1,13 @@
 import React, { useState, useRef, useCallback, useMemo, useEffect } from 'react';
-import { Tabs, Tab, InputGroup, FormControl, Button, Form, Col, Row, Table } from 'react-bootstrap';
+import { Tabs, Tab, InputGroup, FormControl, Button, Form, Col, Row, Table, Modal } from 'react-bootstrap';
 import { useForm, Controller } from 'react-hook-form';
 import { DatePicker } from 'rsuite';
 import SignatureCanvas from 'react-signature-canvas'
 
-
+import "../styles/components/EFormComponent.scss";
 const EFormComponent = () => {
 
-    const sigCanvasRef = useRef([]);
+    const sigCanvasRef = useRef(null);
 
     const [activeTab, setActiveTab] = useState(1);
 
@@ -48,11 +48,12 @@ const EFormComponent = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+
     };
 
 
 
-    const { register: registerTab1, handleSubmit: handleSubmitTab1, control: controlTab1 } = useForm();
+    const { register: registerTab1, handleSubmit: handleSubmitTab1, control: controlTab1, getValues: getValuesTab1 } = useForm();
     const [options, setOptions] = useState(["", "HIK", "FTA", "MCV"]);
     const tab1 = () => {
         return (
@@ -1851,33 +1852,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig1owner'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob);
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
 
@@ -1913,32 +1897,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig1sir'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -1989,33 +1957,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig2owner'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2048,33 +1999,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig2sir'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2120,33 +2054,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig3owner'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2179,33 +2096,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig3sir'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2251,34 +2151,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig4owner'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }
-                                                            }
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />} />
                                     </Col>
                                 </Row>
@@ -2310,33 +2192,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig4sir'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2382,33 +2247,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig5owner'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2441,33 +2289,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig5sir'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2513,33 +2344,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig6owner'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2572,33 +2386,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig6sir'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2644,33 +2441,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig7owner'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2703,33 +2483,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig7sir'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob)
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2774,33 +2537,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig8owner'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob);
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2833,33 +2579,16 @@ const EFormComponent = () => {
                                             as={() => <Controller
                                                 name='sig8sir'
                                                 control={controlTab1}
-                                                render={({ field }) => (
-                                                    <Col style={{
-                                                        border: "1px solid black",
-                                                        width: "200px",
-                                                        height: "100px",
-                                                        overflow: "hidden"
-                                                    }}>
-                                                        <SignatureCanvas
-                                                            clearOnResize={false}
-                                                            ref={ref => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (!findEl) {
-                                                                    sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                }
-                                                            }}
-                                                            onEnd={(e) => {
-                                                                let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                if (findEl) {
-                                                                    findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                        console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                        field.onChange(blob);
-                                                                    })
-                                                                }
-                                                            }}
-                                                        />
-                                                    </Col>
-                                                )}
+                                                render={({ field }) => {
+                                                    return !getValuesTab1(field?.name) ? <Col
+                                                        style={{
+                                                            width: "200px",
+                                                            height: "100px",
+                                                            border: "1px solid black",
+                                                        }}
+                                                        onClick={() => openSignatureModal({ field })}
+                                                    ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                                }}
                                             />}
                                         />
                                     </Col>
@@ -2956,33 +2685,16 @@ const EFormComponent = () => {
                                     as={() => <Controller
                                         name='ownerSig'
                                         control={controlTab1}
-                                        render={({ field }) => (
-                                            <Col style={{
-                                                border: "1px solid black",
-                                                width: "200px",
-                                                height: "100px",
-                                                overflow: "hidden"
-                                            }}>
-                                                <SignatureCanvas
-                                                    clearOnResize={false}
-                                                    ref={ref => {
-                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                        if (!findEl) {
-                                                            sigCanvasRef.current.push({ colName: field.name, ref })
-                                                        }
-                                                    }}
-                                                    onEnd={(e) => {
-                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                        if (findEl) {
-                                                            findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                field.onChange(blob);
-                                                            })
-                                                        }
-                                                    }}
-                                                />
-                                            </Col>
-                                        )}
+                                        render={({ field }) => {
+                                            return !getValuesTab1(field?.name) ? <Col
+                                                style={{
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    border: "1px solid black",
+                                                }}
+                                                onClick={() => openSignatureModal({ field })}
+                                            ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                        }}
                                     />}
                                 />
                             </Form.Group>
@@ -2994,33 +2706,16 @@ const EFormComponent = () => {
                                     as={() => <Controller
                                         name='supervisorSig'
                                         control={controlTab1}
-                                        render={({ field }) => (
-                                            <Col style={{
-                                                border: "1px solid black",
-                                                width: "200px",
-                                                height: "100px",
-                                                overflow: "hidden"
-                                            }}>
-                                                <SignatureCanvas
-                                                    clearOnResize={false}
-                                                    ref={ref => {
-                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                        if (!findEl) {
-                                                            sigCanvasRef.current.push({ colName: field.name, ref })
-                                                        }
-                                                    }}
-                                                    onEnd={(e) => {
-                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                        if (findEl) {
-                                                            findEl?.ref?.getTrimmedCanvas()?.toBlob((blob) => {
-                                                                console.log("file: EFormComponent.js:1856 -> sigCanvasRef.current.getTrimmedCanvas -> blob:", blob)
-                                                                field.onChange(blob);
-                                                            })
-                                                        }
-                                                    }}
-                                                />
-                                            </Col>
-                                        )}
+                                        render={({ field }) => {
+                                            return !getValuesTab1(field?.name) ? <Col
+                                                style={{
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    border: "1px solid black",
+                                                }}
+                                                onClick={() => openSignatureModal({ field })}
+                                            ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab1(field?.name)} /></Col>
+                                        }}
                                     />}
                                 />
                             </Form.Group>
@@ -3035,7 +2730,7 @@ const EFormComponent = () => {
     };
 
 
-    const { register: registerTab2, handleSubmit: handleSubmitTab2, control: controlTab2 } = useForm();
+    const { register: registerTab2, handleSubmit: handleSubmitTab2, control: controlTab2, getValues: getValuesTab2 } = useForm();
     const uiListForTab2 = [
         {
             type: "text",
@@ -3403,35 +3098,16 @@ const EFormComponent = () => {
                                                 as={() => <Controller
                                                     name='sig9owner'
                                                     control={controlTab2}
-                                                    render={({ field }) => (
-                                                        <Col style={{
-                                                            border: "1px solid black",
-                                                            width: "200px",
-                                                            height: "100px",
-                                                            overflow: "hidden"
-                                                        }}>
-                                                            <SignatureCanvas
-                                                                clearOnResize={false}
-                                                                ref={ref => {
-                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                    if (!findEl) {
-                                                                        sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                    }
-                                                                }}
-                                                                onEnd={() => {
-                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                    if (findEl) {
-                                                                        console.log("file: EFormComponent.js:3415 -> tab2 -> findEl:", findEl)
-                                                                        console.log("file: EFormComponent.js:3418 -> findEl.ref.getCanvas -> findEl.ref.getSignaturePad():", findEl.ref.getSignaturePad())
-                                                                        if (findEl?.ref && findEl.ref?.getSignaturePad()) {
-                                                                            let data = findEl.ref.getSignaturePad()?.toDataURL()
-                                                                            console.log("file: EFormComponent.js:3419 -> tab2 -> data:", data)
-                                                                        }
-                                                                    }
-                                                                }}
-                                                            />
-                                                        </Col>
-                                                    )}
+                                                    render={({ field }) => {
+                                                        return !getValuesTab2(field?.name) ? <Col
+                                                            style={{
+                                                                width: "200px",
+                                                                height: "100px",
+                                                                border: "1px solid black",
+                                                            }}
+                                                            onClick={() => openSignatureModal({ field })}
+                                                        ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab2(field?.name)} /></Col>
+                                                    }}
                                                 />}
                                             />
                                         </td>
@@ -3455,7 +3131,7 @@ const EFormComponent = () => {
 
 
     // create tab3
-    const { register: registerTab3, handleSubmit: handleSubmitTab3, control: controlTab3 } = useForm();
+    const { register: registerTab3, handleSubmit: handleSubmitTab3, control: controlTab3, getValues: getValuesTab3 } = useForm();
     const rowListForTab3 = [
         {
             title: "工地整理(開工前)",
@@ -3850,12 +3526,7 @@ const EFormComponent = () => {
                                                                         type="radio"
                                                                         label={checkPointItem?.label}
                                                                         value={checkPointItem?.value}
-                                                                        {...registerTab3(`${rows?.field}.${item?.value}.${checkPoint?.field}`, {
-                                                                            // value: checkPointItem?.value,
-                                                                            // onChange: (e) => {
-                                                                            //     console.log("file: EFormComponent.js:3582 -> {checkPoint?.list.map -> e:", e.target.value)
-                                                                            // }
-                                                                        })}
+                                                                        {...registerTab3(`${rows?.field}.${item?.value}.${checkPoint?.field}`)}
                                                                     />
                                                                 )
                                                             })}
@@ -3896,37 +3567,18 @@ const EFormComponent = () => {
                                             <Form.Label>Signature(簽名)</Form.Label>
                                             <Form.Control
                                                 as={() => <Controller
-                                                    name='sig9owner'
+                                                    name='sig10owner'
                                                     control={controlTab3}
-                                                    render={({ field }) => (
-                                                        <Col style={{
-                                                            border: "1px solid black",
-                                                            width: "200px",
-                                                            height: "100px",
-                                                            overflow: "hidden"
-                                                        }}>
-                                                            <SignatureCanvas
-                                                                clearOnResize={false}
-                                                                ref={ref => {
-                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                    if (!findEl) {
-                                                                        sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                    }
-                                                                }}
-                                                                onEnd={() => {
-                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                    if (findEl) {
-                                                                        console.log("file: EFormComponent.js:3415 -> tab2 -> findEl:", findEl)
-                                                                        console.log("file: EFormComponent.js:3418 -> findEl.ref.getCanvas -> findEl.ref.getSignaturePad():", findEl.ref.getSignaturePad())
-                                                                        if (findEl?.ref && findEl.ref?.getSignaturePad()) {
-                                                                            let data = findEl.ref.getSignaturePad()?.toDataURL()
-                                                                            console.log("file: EFormComponent.js:3419 -> tab2 -> data:", data)
-                                                                        }
-                                                                    }
-                                                                }}
-                                                            />
-                                                        </Col>
-                                                    )}
+                                                    render={({ field }) => {
+                                                        return !getValuesTab3(field?.name) ? <Col
+                                                            style={{
+                                                                width: "200px",
+                                                                height: "100px",
+                                                                border: "1px solid black",
+                                                            }}
+                                                            onClick={() => openSignatureModal({ field })}
+                                                        ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab3(field?.name)} /></Col>
+                                                    }}
                                                 />}
                                             />
                                         </td>
@@ -3942,7 +3594,7 @@ const EFormComponent = () => {
     }
 
     // tab4
-    const { register: registerTab4, handleSubmit: handleSubmitTab4, control: controlTab4 } = useForm();
+    const { register: registerTab4, handleSubmit: handleSubmitTab4, control: controlTab4, getValues: getValuesTab4 } = useForm();
     const rowListForTab4 = [
         {
             num: "1.1",
@@ -4208,37 +3860,18 @@ const EFormComponent = () => {
                                             <Form.Label>合格人員簽署:</Form.Label>
                                             <Form.Control
                                                 as={() => <Controller
-                                                    name='sig9owner'
+                                                    name='sig11owner'
                                                     control={controlTab4}
-                                                    render={({ field }) => (
-                                                        <Col style={{
-                                                            border: "1px solid black",
-                                                            width: "200px",
-                                                            height: "100px",
-                                                            overflow: "hidden"
-                                                        }}>
-                                                            <SignatureCanvas
-                                                                clearOnResize={false}
-                                                                ref={ref => {
-                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                    if (!findEl) {
-                                                                        sigCanvasRef.current.push({ colName: field.name, ref })
-                                                                    }
-                                                                }}
-                                                                onEnd={() => {
-                                                                    let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                                    if (findEl) {
-                                                                        console.log("file: EFormComponent.js:3415 -> tab2 -> findEl:", findEl)
-                                                                        console.log("file: EFormComponent.js:3418 -> findEl.ref.getCanvas -> findEl.ref.getSignaturePad():", findEl.ref.getSignaturePad())
-                                                                        if (findEl?.ref && findEl.ref?.getSignaturePad()) {
-                                                                            let data = findEl.ref.getSignaturePad()?.toDataURL()
-                                                                            console.log("file: EFormComponent.js:3419 -> tab2 -> data:", data)
-                                                                        }
-                                                                    }
-                                                                }}
-                                                            />
-                                                        </Col>
-                                                    )}
+                                                    render={({ field }) => {
+                                                        return !getValuesTab4(field?.name) ? <Col
+                                                            style={{
+                                                                width: "200px",
+                                                                height: "100px",
+                                                                border: "1px solid black",
+                                                            }}
+                                                            onClick={() => openSignatureModal({ field })}
+                                                        ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab4(field?.name)} /></Col>
+                                                    }}
                                                 />}
                                             />
                                         </td>
@@ -4257,7 +3890,7 @@ const EFormComponent = () => {
 
 
     // tab5
-    const { register: registerTab5, handleSubmit: handleSubmitTab5, control: controlTab5 } = useForm();
+    const { register: registerTab5, handleSubmit: handleSubmitTab5, control: controlTab5, getValues: getValuesTab5 } = useForm();
     const tab5List = [
         {
             title: "開工前",
@@ -4435,35 +4068,16 @@ const EFormComponent = () => {
                                     as={() => <Controller
                                         name='qualifiedPersonnelSig'
                                         control={controlTab5}
-                                        render={({ field }) => (
-                                            <Col style={{
-                                                border: "1px solid black",
-                                                width: "200px",
-                                                height: "100px",
-                                                overflow: "hidden"
-                                            }}>
-                                                <SignatureCanvas
-                                                    clearOnResize={false}
-                                                    ref={ref => {
-                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                        if (!findEl) {
-                                                            sigCanvasRef.current.push({ colName: field.name, ref })
-                                                        }
-                                                    }}
-                                                    onEnd={() => {
-                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                        if (findEl) {
-                                                            console.log("file: EFormComponent.js:3415 -> tab2 -> findEl:", findEl)
-                                                            console.log("file: EFormComponent.js:3418 -> findEl.ref.getCanvas -> findEl.ref.getSignaturePad():", findEl.ref.getSignaturePad())
-                                                            if (findEl?.ref && findEl.ref?.getSignaturePad()) {
-                                                                let data = findEl.ref.getSignaturePad()?.toDataURL()
-                                                                console.log("file: EFormComponent.js:3419 -> tab2 -> data:", data)
-                                                            }
-                                                        }
-                                                    }}
-                                                />
-                                            </Col>
-                                        )}
+                                        render={({ field }) => {
+                                            return !getValuesTab5(field?.name) ? <Col
+                                                style={{
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    border: "1px solid black",
+                                                }}
+                                                onClick={() => openSignatureModal({ field })}
+                                            ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab5(field?.name)} /></Col>
+                                        }}
                                     />}
                                 />
                             </Col>
@@ -4485,35 +4099,16 @@ const EFormComponent = () => {
                                     as={() => <Controller
                                         name='inspectorSig'
                                         control={controlTab5}
-                                        render={({ field }) => (
-                                            <Col style={{
-                                                border: "1px solid black",
-                                                width: "200px",
-                                                height: "100px",
-                                                overflow: "hidden"
-                                            }}>
-                                                <SignatureCanvas
-                                                    clearOnResize={false}
-                                                    ref={ref => {
-                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                        if (!findEl) {
-                                                            sigCanvasRef.current.push({ colName: field.name, ref })
-                                                        }
-                                                    }}
-                                                    onEnd={() => {
-                                                        let findEl = sigCanvasRef.current.find((item) => item?.colName === field.name)
-                                                        if (findEl) {
-                                                            console.log("file: EFormComponent.js:3415 -> tab2 -> findEl:", findEl)
-                                                            console.log("file: EFormComponent.js:3418 -> findEl.ref.getCanvas -> findEl.ref.getSignaturePad():", findEl.ref.getSignaturePad())
-                                                            if (findEl?.ref && findEl.ref?.getSignaturePad()) {
-                                                                let data = findEl.ref.getSignaturePad()?.toDataURL()
-                                                                console.log("file: EFormComponent.js:3419 -> tab2 -> data:", data)
-                                                            }
-                                                        }
-                                                    }}
-                                                />
-                                            </Col>
-                                        )}
+                                        render={({ field }) => {
+                                            return !getValuesTab5(field?.name) ? <Col
+                                                style={{
+                                                    width: "200px",
+                                                    height: "100px",
+                                                    border: "1px solid black",
+                                                }}
+                                                onClick={() => openSignatureModal({ field })}
+                                            ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab5(field?.name)} /></Col>
+                                        }}
                                     />}
                                 />
                             </Col>
@@ -4535,15 +4130,44 @@ const EFormComponent = () => {
     }
 
 
+    // signature Modal Handle
+    const [show, setShow] = useState(false);
+    const [onChangeFunc, setOnChangeFunc] = useState(null);
+    const handleClose = useCallback(() => setShow(false), []);
+    const openSignatureModal = ({ field }) => {
+        setOnChangeFunc(field);
+        setShow(true);
+    }
+
+
     return (
         <div>
             <Tabs activeKey={activeTab} onSelect={handleTabSelect}>
                 {tabNames.map((tabName, index) => (
                     <Tab key={tabName + index} eventKey={index + 1} title={`${tabName}`}>
                         {handleFormPage(tabName)}
+                        <Modal show={show} onHide={handleClose}>
+                            <Button onClick={handleClose}>Close</Button>
+                            <SignatureCanvas
+                                clearOnResize={false}
+                                ref={(ref) => {
+                                    sigCanvasRef.current = ref
+                                }}
+                                canvasProps={{
+                                    className: "sigCanvas"
+                                }}
+                                onEnd={() => {
+                                    let getPad = sigCanvasRef.current?.getTrimmedCanvas();
+                                    if (getPad) {
+                                        onChangeFunc.onChange(getPad.toDataURL());
+                                    }
+                                }}
+                            />
+                        </Modal>
                     </Tab>
                 ))}
             </Tabs>
+
         </div>
 
     );
