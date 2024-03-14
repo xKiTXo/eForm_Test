@@ -62,7 +62,7 @@ const EFormComponent = () => {
                 <div>
                     <h1>合格人員 – 工作前安全會議</h1>
                     <Row>
-                        <Col xs={4}>
+                        <Col xs={6} md={4}>
                             <Form.Label>查詢預設工作類別</Form.Label>
                             <InputGroup className="mb-3">
                                 <Form.Control
@@ -76,9 +76,8 @@ const EFormComponent = () => {
                                 </Button>
                             </InputGroup>
                         </Col>
-                    </Row>
-                    <Row>
-                        <Col>
+
+                        <Col xs={6} md={4}>
                             <Form.Group controlId="formWorkCategory">
                                 <Form.Label>工作類別</Form.Label>
                                 <Form.Control
@@ -88,7 +87,7 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={6} md={4}>
                             <Form.Group controlId="formQualifiedPerson">
                                 <Form.Label>合格人員</Form.Label>
                                 <InputGroup className="mb-3">
@@ -103,7 +102,7 @@ const EFormComponent = () => {
                                 </InputGroup>
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={6} md={4}>
                             <Form.Group controlId="formWorkLocation">
                                 <Form.Label>工作地點</Form.Label>
                                 <Form.Select {...registerTab1("workLocation")}>
@@ -115,10 +114,7 @@ const EFormComponent = () => {
                                 </Form.Select>
                             </Form.Group>
                         </Col>
-                    </Row>
-
-                    <Row>
-                        <Col>
+                        <Col xs={6} md={4}>
                             <Form.Group controlId="formDate">
                                 <Form.Label>日期</Form.Label>
                                 <Form.Control
@@ -143,7 +139,7 @@ const EFormComponent = () => {
                                 </Form.Control>
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={6} md={4}>
                             <Form.Group controlId="formMeetingTime">
                                 <Form.Label>安全會議時間</Form.Label>
                                 <Form.Control
@@ -153,7 +149,7 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={6} md={4}>
                             <Form.Group controlId="formEngineeringScope">
                                 <Form.Label>工程領域範圍</Form.Label>
                                 <Form.Select
@@ -165,10 +161,8 @@ const EFormComponent = () => {
                                 </Form.Select>
                             </Form.Group>
                         </Col>
-                    </Row>
 
-                    <Row>
-                        <Col>
+                        <Col xs={6} md={4}>
                             <Form.Group controlId="formWO">
                                 <Form.Label>WO 編號</Form.Label>
                                 <Form.Control
@@ -178,7 +172,7 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={6} md={4}>
                             <Form.Group controlId="formEnterTime">
                                 <Form.Label>進入軌道時間</Form.Label>
                                 <Form.Control
@@ -188,7 +182,7 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={6} md={4}>
                             <Form.Group controlId="formTN">
                                 <Form.Label>TN/ETMS 編號</Form.Label>
                                 <Form.Control
@@ -206,18 +200,18 @@ const EFormComponent = () => {
                     </Form.Label>
 
                     <Row>
-                        <Col>
+                        <Col xs={12}>
                             <Form.Group controlId="formValidDocuments">
                                 <Form.Label>1. 有效證件</Form.Label>
                                 <Row>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="建造業安全訓練證明書(平安卡)"
                                             {...registerTab1("validDocuments1")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="建造業工人註冊證"
@@ -227,116 +221,108 @@ const EFormComponent = () => {
                                 </Row>
                             </Form.Group>
                         </Col>
-                    </Row>
 
-                    {/* 
-                    Add new Section, title is "2. 工作環境", have 5 parts
-                    part 1. Checkbox list. all checkbox columns are row line, create new line per 3 columns in a row,
-                    last checkbox is "其他:" and input text in one line
-                    checkbox list is below setting:
-                    1. 軌道上或附近
-                    2. 架空電線上或附近
-                    3. 電力裝置
-                    4. 帶電導體上或附近
-                    5. 密閉空間
-                    6. 挖掘工程
-                    7. 狹窄空間
-                    8. 高空工作
-                    9. 酷熱環境
-                    10. 空氣污染
-                    11. 交通車輛
-                */}
-                    <Row>
-                        <Col>
+
+                        {/* 
+                                    Add new Section, title is "2. 工作環境", have 5 parts
+                                    part 1. Checkbox list. all checkbox columns are row line, create new line per 3 columns in a row,
+                                    last checkbox is "其他:" and input text in one line
+                                    checkbox list is below setting:
+                                    1. 軌道上或附近
+                                    2. 架空電線上或附近
+                                    3. 電力裝置
+                                    4. 帶電導體上或附近
+                                    5. 密閉空間
+                                    6. 挖掘工程
+                                    7. 狹窄空間
+                                    8. 高空工作
+                                    9. 酷熱環境
+                                    10. 空氣污染
+                                    11. 交通車輛
+                                */}
+
+                        <Col xs={12}>
                             <Form.Group controlId="formWorkEnvironment">
                                 <Form.Label>2. 工作環境</Form.Label>
                                 <Row>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="軌道上或附近"
                                             {...registerTab1("workEnvironmentTrack")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="架空電線上或附近"
                                             {...registerTab1("workEnvironmentOverheadWire")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="電力裝置"
                                             {...registerTab1("workEnvironmentPowerDevice")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="帶電導體上或附近"
                                             {...registerTab1("workEnvironmentChargedConductor")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="密閉空間"
                                             {...registerTab1("workEnvironmentConfinedSpace")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="挖掘工程"
                                             {...registerTab1("workEnvironmentExcavation")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="狹窄空間"
                                             {...registerTab1("workEnvironmentNarrowSpace")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="高空工作"
                                             {...registerTab1("workEnvironmentHighAltitude")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="酷熱環境"
                                             {...registerTab1("workEnvironmentHotEnvironment")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="空氣污染"
                                             {...registerTab1("workEnvironmentAirPollution")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="交通車輛"
                                             {...registerTab1("workEnvironmentVehicles")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={12}>
                                         <Form.Label>其他:</Form.Label>
                                         <Form.Control
                                             type="text"
@@ -347,116 +333,108 @@ const EFormComponent = () => {
                                 </Row>
                             </Form.Group>
                         </Col>
-                    </Row>
 
-                    {/* 
-                    Part 2. title is "隱患/風險" is checkbox list. 
-                    all checkbox columns are row line, create new line per 3 columns in a row,
-                    last checkbox is "其他:" and input text in one line
-                    checkbox list is below setting:
-                    1. 照明不足
-                    2. 通風欠佳
-                    3. 地面濕滑
-                    4. 地面不平/斜路
-                    5. 阻礙物
-                    6. 隙縫(裂口)
-                    7. 墮下
-                    8. 缺氧
-                    9. 中暑
-                    10. 電器設備跳火
-                    11. 觸電/漏電
-                */}
-                    <Row>
+
+                        {/* 
+                            Part 2. title is "隱患/風險" is checkbox list. 
+                            all checkbox columns are row line, create new line per 3 columns in a row,
+                            last checkbox is "其他:" and input text in one line
+                            checkbox list is below setting:
+                            1. 照明不足
+                            2. 通風欠佳
+                            3. 地面濕滑
+                            4. 地面不平/斜路
+                            5. 阻礙物
+                            6. 隙縫(裂口)
+                            7. 墮下
+                            8. 缺氧
+                            9. 中暑
+                            10. 電器設備跳火
+                            11. 觸電/漏電
+                        */}
+
                         <Col>
                             <Form.Group controlId="formHiddenDanger">
                                 <Form.Label>隱患/風險</Form.Label>
                                 <Row>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="照明不足"
                                             {...registerTab1("hiddenDangerInsufficientLighting")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="通風欠佳"
                                             {...registerTab1("hiddenDangerPoorVentilation")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="地面濕滑"
                                             {...registerTab1("hiddenDangerSlipperyGround")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="地面不平/斜路"
                                             {...registerTab1("hiddenDangerUnevenGround")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="阻礙物"
                                             {...registerTab1("hiddenDangerObstacle")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="隙縫(裂口)"
                                             {...registerTab1("hiddenDangerCrack")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="墮下"
                                             {...registerTab1("hiddenDangerFall")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="缺氧"
                                             {...registerTab1("hiddenDangerOxygenDeficiency")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="中暑"
                                             {...registerTab1("hiddenDangerHeatStroke")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="電器設備跳火"
                                             {...registerTab1("hiddenDangerElectricalEquipmentFire")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="觸電/漏電"
                                             {...registerTab1("hiddenDangerElectricShock")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={12}>
                                         <Form.Label>其他:</Form.Label>
                                         <Form.Control
                                             type="text"
@@ -467,27 +445,23 @@ const EFormComponent = () => {
                                 </Row>
                             </Form.Group>
                         </Col>
-                    </Row>
-
-
-                    {/* 
-                    Part 3. title is "滑倒、絆倒、跌倒交通/黑點" 
-                    input element, has checkbox name is "不適用" at right of input element,
-                    input element is disabled when checkbox is checked
-                */}
-                    <Row>
-                        <Col>
+                        {/* 
+                            Part 3. title is "滑倒、絆倒、跌倒交通/黑點" 
+                            input element, has checkbox name is "不適用" at right of input element,
+                            input element is disabled when checkbox is checked
+                        */}
+                        <Col xs={12}>
                             <Form.Group controlId="formSlipTripFall">
                                 <Form.Label>滑倒、絆倒、跌倒交通/黑點</Form.Label>
                                 <Row>
-                                    <Col>
+                                    <Col xs={8} lg={6}>
                                         <Form.Control
                                             type="text"
                                             placeholder="滑倒、絆倒、跌倒交通/黑點"
                                             {...registerTab1("slipTripFall")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={4}>
                                         <Form.Check
                                             type="checkbox"
                                             label="不適用"
@@ -497,15 +471,13 @@ const EFormComponent = () => {
                                 </Row>
                             </Form.Group>
                         </Col>
-                    </Row>
 
 
-                    {/* 
-                    title is "控制措施", input element.
-                    title is "要點提示", input element.
-                */}
-                    <Row>
-                        <Col>
+                        {/* 
+                            title is "控制措施", input element.
+                            title is "要點提示", input element.
+                        */}
+                        <Col xs={12}>
                             <Form.Group controlId="formcontrolTab1Measures">
                                 <Form.Label>控制措施</Form.Label>
                                 <Form.Control
@@ -515,9 +487,7 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                    </Row>
-                    <Row>
-                        <Col>
+                        <Col xs={12}>
                             <Form.Group controlId="formKeyPoints">
                                 <Form.Label>要點提示</Form.Label>
                                 <Form.Control
@@ -527,79 +497,73 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                    </Row>
-
-
-                    {/* 
-                    title is "3.天氣",
-                    checkbox row list, per line 4 columns
-                    list item:
-                    正常
-                    烈日
-                    暴雨
-                    勁風 
-                    雷暴
-                    颱風
-                    酷熱
-                    低溫
-                */}
-                    <Row>
-                        <Col>
+                        {/* 
+                            title is "3.天氣",
+                            checkbox row list, per line 4 columns
+                            list item:
+                            正常
+                            烈日
+                            暴雨
+                            勁風 
+                            雷暴
+                            颱風
+                            酷熱
+                            低溫
+                        */}
+                        <Col xs={12}>
                             <Form.Group controlId="formWeather">
                                 <Form.Label>3.天氣</Form.Label>
                                 <Row>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="正常"
                                             {...registerTab1("weatherNormal")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="烈日"
                                             {...registerTab1("weatherSun")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="暴雨"
                                             {...registerTab1("weatherRain")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="勁風"
                                             {...registerTab1("weatherStrongWind")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="雷暴"
                                             {...registerTab1("weatherThunderstorm")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="颱風"
                                             {...registerTab1("weatherTyphoon")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="酷熱"
                                             {...registerTab1("weatherHot")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="低溫"
@@ -609,14 +573,12 @@ const EFormComponent = () => {
                                 </Row>
                             </Form.Group>
                         </Col>
-                    </Row>
+                        {/* 
+                            title is "保護措施", input element.
+                            title is "要點提示", input element.
+                        */}
 
-                    {/* 
-                    title is "保護措施", input element.
-                    title is "要點提示", input element.
-                */}
-                    <Row>
-                        <Col>
+                        <Col xs={12}>
                             <Form.Group controlId="formProtectionMeasures">
                                 <Form.Label>保護措施</Form.Label>
                                 <Form.Control
@@ -626,9 +588,7 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                    </Row>
-                    <Row>
-                        <Col>
+                        <Col xs={12}>
                             <Form.Group controlId="formKeyPoints">
                                 <Form.Label>要點提示</Form.Label>
                                 <Form.Control
@@ -638,71 +598,65 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                    </Row>
-
-
-                    {/* 
-                    title is "4.保護措施及安全文件"
-                    checkbox row list, per line 4 columns
-                    list item:
-                    工程領域
-                    軌道車輛運行安排
-                    軌道上或附近工作
-                    非工程領域
-                    行車時間
-                    非行車時間
-                    非軌道上或附近工作
-                */}
-                    <Row>
-                        <Col>
+                        {/* 
+                            title is "4.保護措施及安全文件"
+                            checkbox row list, per line 4 columns
+                            list item:
+                            工程領域
+                            軌道車輛運行安排
+                            軌道上或附近工作
+                            非工程領域
+                            行車時間
+                            非行車時間
+                            非軌道上或附近工作
+                        */}
+                        <Col xs={12}>
                             <Form.Group controlId="formProtectionMeasuresAndSafetyDocuments">
                                 <Form.Label>4.保護措施及安全文件</Form.Label>
                                 <Row>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="工程領域"
                                             {...registerTab1("protectionMeasuresEngineeringScope")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="軌道車輛運行安排"
                                             {...registerTab1("protectionMeasuresTrackVehicleArrangement")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="軌道上或附近工作"
                                             {...registerTab1("protectionMeasuresTrackWork")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="非工程領域"
                                             {...registerTab1("protectionMeasuresNonEngineeringScope")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="行車時間"
                                             {...registerTab1("protectionMeasuresDrivingTime")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="非行車時間"
                                             {...registerTab1("protectionMeasuresNonDrivingTime")}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col xs={6} md={3}>
                                         <Form.Check
                                             type="checkbox"
                                             label="非軌道上或附近工作"
@@ -712,20 +666,18 @@ const EFormComponent = () => {
                                 </Row>
                             </Form.Group>
                         </Col>
-                    </Row>
 
 
-                    {/* 
-                    title is "保護措施"
-                    checkbox row list, per line 4 columns
-                    list item:
-                    路軌夾 手提燈/信號燈 號角+燈/旗 止輪器 圍欄
-                    密閉空間器具 
-                    checkbox has input text in one line below:
-                    其他： 紅閃燈位置： 接地棒位置：
-                */}
-                    <Row>
-                        <Col>
+                        {/* 
+                            title is "保護措施"
+                            checkbox row list, per line 4 columns
+                            list item:
+                            路軌夾 手提燈/信號燈 號角+燈/旗 止輪器 圍欄
+                            密閉空間器具 
+                            checkbox has input text in one line below:
+                            其他： 紅閃燈位置： 接地棒位置：
+                        */}
+                        <Col xs={12}>
                             <Form.Group controlId="formProtectionMeasures">
                                 <Form.Label>保護措施</Form.Label>
                                 <Row>
@@ -757,8 +709,6 @@ const EFormComponent = () => {
                                             {...registerTab1("protectionMeasuresWheelStopper")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
                                     <Col>
                                         <Form.Check
                                             type="checkbox"
@@ -773,8 +723,6 @@ const EFormComponent = () => {
                                             {...registerTab1("protectionMeasuresConfinedSpace")}
                                         />
                                     </Col>
-                                </Row>
-                                <Row>
                                     <Col>
                                         <Form.Label>其他：</Form.Label>
                                         <Form.Control
