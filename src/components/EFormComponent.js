@@ -1803,7 +1803,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -1848,7 +1848,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -1908,7 +1908,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -1950,7 +1950,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2005,7 +2005,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2047,7 +2047,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2102,7 +2102,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2143,7 +2143,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2198,7 +2198,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2240,7 +2240,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2295,7 +2295,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2337,7 +2337,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2392,7 +2392,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2434,7 +2434,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2488,7 +2488,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2530,7 +2530,7 @@ const EFormComponent = () => {
                                                 render={({ field }) => {
                                                     return !getValuesTab1(field?.name) ? <Col
                                                         style={{
-                                                            width: "200px",
+                                                            width: "100%",
                                                             height: "100px",
                                                             border: "1px solid black",
                                                         }}
@@ -2636,7 +2636,7 @@ const EFormComponent = () => {
                                         render={({ field }) => {
                                             return !getValuesTab1(field?.name) ? <Col
                                                 style={{
-                                                    width: "200px",
+                                                    width: "100%",
                                                     height: "100px",
                                                     border: "1px solid black",
                                                 }}
@@ -2657,7 +2657,7 @@ const EFormComponent = () => {
                                         render={({ field }) => {
                                             return !getValuesTab1(field?.name) ? <Col
                                                 style={{
-                                                    width: "200px",
+                                                    width: "100%",
                                                     height: "100px",
                                                     border: "1px solid black",
                                                 }}
@@ -2683,17 +2683,29 @@ const EFormComponent = () => {
         {
             type: "text",
             label: "Potential Hazards/Irregularities/Unsafe Acts or Unsafe Conditions 潛在危機/不規則的/不安全行動或不安全的情況",
-            grid: 4
+            grid: 4,
+            responsiveStyles: {
+                xs: 12,
+                md: 6
+            }
         },
         {
             type: "text",
             label: `Safety Precautionary Measures/Actions/ Improvement Actions ${<p>安全預防措施/更正行動/改善行動</p>}`,
-            grid: 4
+            grid: 4,
+            responsiveStyles: {
+                xs: 8,
+                md: 4
+            }
         },
         {
             type: "text",
             label: "Action執行人",
-            grid: 4
+            grid: 4,
+            responsiveStyles: {
+                xs: 4,
+                md: 2
+            }
         },
     ]
     const rowListForTab2 = [
@@ -2937,7 +2949,7 @@ const EFormComponent = () => {
     ]
     const tab2 = () => {
         return (
-            <form onSubmit={handleSubmitTab2(onSubmit)}>
+            <form className='tab2_form' onSubmit={handleSubmitTab2(onSubmit)}>
                 <Button type='submit'>Submit</Button>
                 <div>
                     {/*  
@@ -2946,20 +2958,6 @@ const EFormComponent = () => {
                     <Row>
                         <Col xs={12}>
                             <Form.Label>Record of Hazard Identification Activity (HIA) meeting form 危害識別活動記錄及每日檢查表</Form.Label>
-                        </Col>
-                    </Row>
-                    {/*  Can you make it to table styles? */}
-                    <Row>
-                        <Col xs={12}>
-                            <Table className="table">
-                                <thead>
-                                    <tr>
-                                        {uiListForTab2.map((item, index) => (
-                                            <th key={item.label + index}>{item.label}</th>
-                                        ))}
-                                    </tr>
-                                </thead>
-                            </Table>
                         </Col>
                     </Row>
 
@@ -2972,14 +2970,23 @@ const EFormComponent = () => {
                     */}
                     <Row>
                         <Col xs={12}>
-                            <Table className="table">
-                                <tbody>
-                                    {rowListForTab2.map((rows, index) => (
-                                        <tr
-                                            key={rows.field + index}
-                                        >
-                                            <td>{rows.Hazards}</td>
-                                            <td>
+                            <Row>
+                                <Col xs={12}>
+                                    <Row>
+                                        {uiListForTab2.map((item, index) => (
+                                            <Col {...item?.responsiveStyles} key={item.label + index}>{item.label}</Col>
+                                        ))}
+                                    </Row>
+                                </Col>
+                                {rowListForTab2.map((rows, index) => (
+                                    <Col
+                                        key={rows.field + index}
+                                        xs={12}
+                                        className='rowItem'
+                                    >
+                                        <Row>
+                                            <Col xs={12} md={6}>{rows.Hazards}</Col>
+                                            <Col xs={8} md={4}>
                                                 {rows.SafetyPrecautionaryMeasures.map((item, index) => (
                                                     <Form.Check
                                                         key={item.label + index}
@@ -2988,8 +2995,8 @@ const EFormComponent = () => {
                                                         {...registerTab2(`${rows?.field}.${item?.value}`)}
                                                     />
                                                 ))}
-                                            </td>
-                                            <td>
+                                            </Col>
+                                            <Col xs={4} md={2}>
                                                 {rows.Actions.map((item, index) => (
                                                     <Form.Check
                                                         key={item.label + index}
@@ -2998,77 +3005,75 @@ const EFormComponent = () => {
                                                         {...registerTab2(`${rows?.field}.${item?.value}`)}
                                                     />
                                                 ))}
-                                            </td>
-                                        </tr>
-                                    ))}
-                                    <tr>
-                                        <td colSpan={2}>
-                                            Other: 其他
-                                            <Form.Control
-                                                type="text"
-                                                {...registerTab2(`Other.Other1`)}
-                                            />
-                                            <Form.Control
-                                                type="text"
-                                                {...registerTab2(`Other.Other2`)}
-                                            />
-                                        </td>
-                                        <td>
-                                            <Form.Check
-                                                type="checkbox"
-                                                label={"CP"}
-                                                {...registerTab2(`Other.CP`)}
-                                            />
-                                            <Form.Check
-                                                type="checkbox"
-                                                label={"工人"}
-                                                {...registerTab2(`Other.Worker`)}
-                                            />
-                                        </td>
-                                    </tr>
-                                    {/* 
-                                        add new line 
-                                        input element , name is Competent person(合格人士)
-                                        SignatureCanvas, name is Signature(簽名)
-                                        datepicker, type is date, name is Date*(日期):
-                                    */}
-                                    <tr>
-                                        <td>
-                                            <Form.Label>Competent person(合格人士)</Form.Label>
-                                            <Form.Control
-                                                type="text"
-                                                {...registerTab2("CompetentPerson")}
-                                            />
-                                        </td>
-                                        <td>
-                                            <Form.Label>Signature(簽名)</Form.Label>
-                                            <Form.Control
-                                                as={() => <Controller
-                                                    name='sig9owner'
-                                                    control={controlTab2}
-                                                    render={({ field }) => {
-                                                        return !getValuesTab2(field?.name) ? <Col
-                                                            style={{
-                                                                width: "200px",
-                                                                height: "100px",
-                                                                border: "1px solid black",
-                                                            }}
-                                                            onClick={() => openSignatureModal({ field })}
-                                                        ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab2(field?.name)} /></Col>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                ))}
+
+                                <Col xs={10}>
+                                    Other: 其他
+                                    <Form.Control
+                                        type="text"
+                                        {...registerTab2(`Other.Other1`)}
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        {...registerTab2(`Other.Other2`)}
+                                    />
+                                </Col>
+                                <Col xs={2}>
+                                    <p></p>
+                                    <Form.Check
+                                        type="checkbox"
+                                        label={"CP"}
+                                        {...registerTab2(`Other.CP`)}
+                                    />
+                                    <Form.Check
+                                        type="checkbox"
+                                        label={"工人"}
+                                        {...registerTab2(`Other.Worker`)}
+                                    />
+                                </Col>
+                                {/* 
+                                    add new line 
+                                    input element , name is Competent person(合格人士)
+                                    SignatureCanvas, name is Signature(簽名)
+                                    datepicker, type is date, name is Date*(日期):
+                                */}
+                                <Col xs={6} sm={6} md={6} lg={4}>
+                                    <Form.Label>Competent person(合格人士)</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        {...registerTab2("CompetentPerson")}
+                                    />
+                                </Col>
+                                <Col xs={6} sm={6} md={6} lg={4}>
+                                    <Form.Label>Date*(日期):</Form.Label>
+                                    <Form.Control
+                                        type="date"
+                                        {...registerTab2("Date")}
+                                    />
+                                </Col>
+                                <Col xs={6} sm={6} md={6} lg={4}>
+                                    <Form.Label>Signature(簽名)</Form.Label>
+                                    <Form.Control
+                                        as={() => <Controller
+                                            name='sig9owner'
+                                            control={controlTab2}
+                                            render={({ field }) => {
+                                                return !getValuesTab2(field?.name) ? <Col
+                                                    style={{
+                                                        width: "100%",
+                                                        height: "100px",
+                                                        border: "1px solid black",
                                                     }}
-                                                />}
-                                            />
-                                        </td>
-                                        <td>
-                                            <Form.Label>Date*(日期):</Form.Label>
-                                            <Form.Control
-                                                type="date"
-                                                {...registerTab2("Date")}
-                                            />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </Table>
+                                                    onClick={() => openSignatureModal({ field })}
+                                                ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab2(field?.name)} /></Col>
+                                            }}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
                         </Col>
                     </Row>
 
@@ -3423,8 +3428,6 @@ const EFormComponent = () => {
                         <Col xs={12}>
                             <Form.Label>每日工地檢查表</Form.Label>
                         </Col>
-                    </Row>
-                    <Row>
                         <Col xs={12}>
                             <Form.Group>
                                 <Form.Label>工作位置:</Form.Label>
@@ -3434,84 +3437,89 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                    </Row>
-                    <Row>
                         <Col xs={12}>
-                            <Table className="table">
-                                <tbody>
-                                    <tr>
-                                        <td>项目</td>
+                            <Row>
+                                <Col>
+                                    <Row>
+                                        <Col>项目</Col>
                                         {checkPointListForTab3.map((item, index) => {
                                             return (
-                                                <td key={item.title + index}>{item.title}</td>
+                                                <Col key={item.title + index}>{item.title}</Col>
                                             )
                                         })}
-                                    </tr>
-
-
-
-                                    {rowListForTab3.map((rows, rowIndex) => {
-                                        return rows?.list.map((item, index) => {
-                                            return <React.Fragment key={item.label + index}>
-                                                {index === 0 ? <tr key={index}>
-                                                    <td colSpan={5}>
-                                                        <Form.Label style={{ marginBottom: '8px', marginTop: "16px" }}>
-                                                            {rows?.title}
-                                                        </Form.Label>
-                                                    </td>
-                                                </tr> : null}
-                                                <tr>
-                                                    <td>
+                                    </Row>
+                                </Col>
+                                {rowListForTab3.map((rows, rowIndex) => {
+                                    return rows?.list.map((item, index) => {
+                                        return <React.Fragment key={item.label + index}>
+                                            {index === 0 ? <Col xs={12} key={index}>
+                                                <Form.Label style={{ marginBottom: '8px', marginTop: "16px" }}>
+                                                    {rows?.title}
+                                                </Form.Label>
+                                            </Col> : null}
+                                            <Col xs={12}>
+                                                <Row>
+                                                    <Col xs={4}>
                                                         <Form.Label>{item?.label}</Form.Label>
-                                                    </td>
-                                                    {checkPointListForTab3.map((checkPoint, index) => {
-                                                        return <td key={checkPoint.title + index}>
-                                                            {checkPoint?.list.map((checkPointItem, index) => {
-                                                                return (
-                                                                    <Form.Check
-                                                                        inline
-                                                                        key={checkPointItem.label + index}
-                                                                        type="radio"
-                                                                        label={checkPointItem?.label}
-                                                                        value={checkPointItem?.value}
-                                                                        {...registerTab3(`${rows?.field}.${item?.value}.${checkPoint?.field}`)}
-                                                                    />
-                                                                )
+                                                    </Col>
+                                                    <Col xs={8}>
+                                                        <Row>
+                                                            {checkPointListForTab3.map((checkPoint, index) => {
+                                                                return <Col key={checkPoint.title + index}>
+                                                                    <Row>
+                                                                        {checkPoint?.list.map((checkPointItem, index) => {
+                                                                            return (
+                                                                                <Col xs={12} lg={Math.floor(12 / checkPoint?.list.length)}>
+                                                                                    <Form.Check
+                                                                                        inline
+                                                                                        key={checkPointItem.label + index}
+                                                                                        type="radio"
+                                                                                        label={checkPointItem?.label}
+                                                                                        value={checkPointItem?.value}
+                                                                                        {...registerTab3(`${rows?.field}.${item?.value}.${checkPoint?.field}`)}
+                                                                                    />
+                                                                                </Col>
+                                                                            )
+                                                                        })}
+                                                                    </Row>
+                                                                </Col>
                                                             })}
-                                                        </td>
-                                                    })}
-                                                </tr>
-                                            </React.Fragment>
-                                        })
-                                    })}
+                                                        </Row>
+                                                    </Col>
+                                                </Row>
+                                            </Col>
+                                        </React.Fragment>
+                                    })
+                                })}
 
-                                    <tr>
-                                        <td colSpan={3}>
-                                            <Form.Group>
-                                                <Form.Label>跟進建議：</Form.Label>
-                                                <Form.Control
-                                                    type="text"
-                                                    {...registerTab3("suggestions")}
-                                                />
-                                            </Form.Group>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
+                                <Col xs={12}>
+                                    <Col xs={12}>
+                                        <Form.Group>
+                                            <Form.Label>跟進建議：</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                {...registerTab3("suggestions")}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                </Col>
+                                <Col xs={12}>
+                                    <Row>
+                                        <Col xs={6} md={6} lg={4}>
                                             <Form.Label>Date*(日期):</Form.Label>
                                             <Form.Control
                                                 type="date"
                                                 {...registerTab3("Date")}
                                             />
-                                        </td>
-                                        <td>
+                                        </Col>
+                                        <Col xs={6} md={6} lg={4}>
                                             <Form.Label>Competent person(合格人士)</Form.Label>
                                             <Form.Control
                                                 type="text"
                                                 {...registerTab3("CompetentPerson")}
                                             />
-                                        </td>
-                                        <td>
+                                        </Col>
+                                        <Col xs={6} md={6} lg={4}>
                                             <Form.Label>Signature(簽名)</Form.Label>
                                             <Form.Control
                                                 as={() => <Controller
@@ -3520,7 +3528,7 @@ const EFormComponent = () => {
                                                     render={({ field }) => {
                                                         return !getValuesTab3(field?.name) ? <Col
                                                             style={{
-                                                                width: "200px",
+                                                                width: "100%",
                                                                 height: "100px",
                                                                 border: "1px solid black",
                                                             }}
@@ -3529,11 +3537,10 @@ const EFormComponent = () => {
                                                     }}
                                                 />}
                                             />
-                                        </td>
-
-                                    </tr>
-                                </tbody>
-                            </Table>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                            </Row>
                         </Col>
                     </Row>
                 </div>
@@ -3673,162 +3680,153 @@ const EFormComponent = () => {
                 <Button type='submit'>Submit</Button>
                 <div>
                     <Row>
-                        <Col xs={4}>
-                            <Form.Label>每日工地檢查表</Form.Label>
-                        </Col>
-                        <Col xs={4}>
-                            {/* 
+                        <Row>
+                            <Col xs={3}>
+                                <Form.Label>每日工地檢查表</Form.Label>
+                            </Col>
+                            <Col xs={4}>
+                                {/* 
                                input element , name is 地盤:
                             */}
-                            <Form.Label>地盤:</Form.Label>
-                            <Form.Control
-                                type="text"
-                                {...registerTab4("site")}
-                            />
-                        </Col>
-                        <Col xs={4}>
-                            {/* 
+                                <Form.Label>地盤:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    {...registerTab4("site")}
+                                />
+                            </Col>
+                            <Col xs={5}>
+                                {/* 
                                input element , name is 日期:
                             */}
-                            <Form.Label>日期:</Form.Label>
-                            <Form.Control
-                                type="date"
-                                {...registerTab4("date")}
-                            />
-                        </Col>
-                    </Row>
-                    <Row>
+                                <Form.Label>日期:</Form.Label>
+                                <Form.Control
+                                    type="date"
+                                    {...registerTab4("date")}
+                                />
+                            </Col >
+                        </Row>
                         <Col xs={12}>
-                            <Table className="table">
-                                <tbody>
-                                    <tr>
-                                        <td>項目</td>
-                                        <td colSpan={3}>重點記錄</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colSpan={3}>***1</td>
-                                        <td></td>
-                                        <td colSpan={1}>
-                                            今天安全表現:
-                                        </td>
-                                    </tr>
-
-                                    {
-                                        rowListForTab4.map((rows, index) => {
-                                            return (
-                                                <tr key={rows.title + index}>
-                                                    <td>{rows?.num}</td>
-                                                    <td colSpan={3}>{rows?.title}</td>
-                                                    <td>
-                                                        {checkPointListForTab4.map((item, index) => {
-                                                            return <Row key={item.label + index}>
-                                                                {handleCheckPointListForTab4(rows, item)}
-                                                            </Row>
-                                                        })}
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                    <tr>
-                                        <td colSpan={3}>1.12</td>
-                                        <td>
+                            <Row style={{ marginBottom: '1rem' }}>
+                                <Row>
+                                    <Col xs={3}>項目</Col>
+                                    <Col xs={9} style={{ marginBottom: '1rem' }}>重點記錄</Col>
+                                    <Col xs={7}>***1</Col>
+                                    <Col xs={5} style={{ marginBottom: '1rem' }}>今天安全表現:</Col>
+                                </Row>
+                                {
+                                    rowListForTab4.map((rows, index) => {
+                                        return (
+                                            <Row key={rows.title + index}>
+                                                <Col xs={3}>{rows?.num}</Col>
+                                                <Col xs={4}>{rows?.title}</Col>
+                                                <Col xs={5}>
+                                                    {checkPointListForTab4.map((item, index) => {
+                                                        return <Row key={item.label + index}>
+                                                            {handleCheckPointListForTab4(rows, item)}
+                                                        </Row>
+                                                    })}
+                                                </Col>
+                                            </Row>
+                                        )
+                                    })
+                                }
+                                <Col xs={12}>
+                                    <Row>
+                                        <Col xs={3}>1.12</Col>
+                                        <Col xs={4}>
                                             其他:
                                             <Form.Control
                                                 type="text"
                                                 {...registerTab4("other.text")} />
-                                        </td>
-                                        <td>
+                                        </Col>
+                                        <Col xs={5}>
                                             {checkPointListForTab4.map((item, index) => {
                                                 return <Row key={item.label + index}>
                                                     {handleCheckPointListForTab4({ field: "other" }, item)}
                                                 </Row>
                                             })}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colSpan={3}>1.13</td>
-                                        <td>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                                <Col xs={12}>
+                                    <Row>
+
+                                        <Col xs={3}>1.13</Col>
+                                        <Col xs={4}>
                                             其他:
                                             <Form.Control
                                                 type="text"
                                                 {...registerTab4("other2.text")} />
-                                        </td>
-                                        <td>
+                                        </Col>
+                                        <Col xs={5}>
                                             {checkPointListForTab4.map((item, index) => {
                                                 return <Row key={item.label + index}>
                                                     {handleCheckPointListForTab4({ field: "other2" }, item)}
                                                 </Row>
                                             })}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colSpan={3}>1.14</td>
-                                        <td>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                                <Col xs={12}>
+                                    <Row>
+                                        <Col xs={3}>1.14</Col>
+                                        <Col xs={4}>
                                             其他:
                                             <Form.Control
                                                 type="text"
                                                 {...registerTab4("other3.text")} />
-                                        </td>
-                                        <td>
+                                        </Col>
+                                        <Col xs={5}>
                                             {checkPointListForTab4.map((item, index) => {
                                                 return <Row key={item.label + index}>
                                                     {handleCheckPointListForTab4({ field: "other3" }, item)}
                                                 </Row>
                                             })}
-                                        </td>
-                                    </tr>
+                                        </Col>
+                                    </Row>
+                                </Col>
 
-                                    <tr>
-                                        <td colSpan={5}>
-                                            <Form.Label>2. 明天需跟進事項:</Form.Label>
-                                            <Form.Control
-                                                type="textarea"
-                                                rows={3}
-                                                {...registerTab4("tomorrowFollowUp")}
-                                            />
-                                        </td>
-                                    </tr>
 
-                                    {/* 
+                                {/* 
                                         new line, rows,
                                         input element , name is 合格人員姓名:
                                         input element , name is 合格人員簽署：
                                     */}
-                                    <tr>
-                                        <td >
-                                            <Form.Label>合格人員姓名:</Form.Label>
-                                            <Form.Control
-                                                type="text"
-                                                {...registerTab4("qualifiedPersonnelName")}
-                                            />
-                                        </td>
-                                        <td colSpan={3}>
-                                            <Form.Label>合格人員簽署:</Form.Label>
-                                            <Form.Control
-                                                as={() => <Controller
-                                                    name='sig11owner'
-                                                    control={controlTab4}
-                                                    render={({ field }) => {
-                                                        return !getValuesTab4(field?.name) ? <Col
-                                                            style={{
-                                                                width: "200px",
-                                                                height: "100px",
-                                                                border: "1px solid black",
-                                                            }}
-                                                            onClick={() => openSignatureModal({ field })}
-                                                        ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab4(field?.name)} /></Col>
+                                <Col xs={12}>
+                                    <Form.Label>2. 明天需跟進事項:</Form.Label>
+                                    <Form.Control
+                                        type="textarea"
+                                        rows={3}
+                                        {...registerTab4("tomorrowFollowUp")}
+                                    />
+                                </Col>
+                                <Col xs={6}>
+                                    <Form.Label>合格人員姓名:</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        {...registerTab4("qualifiedPersonnelName")}
+                                    />
+                                </Col>
+                                <Col xs={6}>
+                                    <Form.Label>合格人員簽署:</Form.Label>
+                                    <Form.Control
+                                        as={() => <Controller
+                                            name='sig11owner'
+                                            control={controlTab4}
+                                            render={({ field }) => {
+                                                return !getValuesTab4(field?.name) ? <Col
+                                                    style={{
+                                                        width: "100%",
+                                                        height: "100px",
+                                                        border: "1px solid black",
                                                     }}
-                                                />}
-                                            />
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-
-                                </tbody>
-                            </Table>
+                                                    onClick={() => openSignatureModal({ field })}
+                                                ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab4(field?.name)} /></Col>
+                                            }}
+                                        />}
+                                    />
+                                </Col>
+                            </Row>
                         </Col>
                     </Row>
                 </div>
@@ -3922,7 +3920,7 @@ const EFormComponent = () => {
                         <Col xs={12}>
                             <Form.Label>承辦商: ATAL Building Services Engineering Ltd.</Form.Label>
                         </Col>
-                        <Col xs={6}>
+                        <Col xs={12} md={6}>
                             <Form.Group>
                                 <Form.Label>日期:</Form.Label>
                                 <Form.Control
@@ -3931,7 +3929,7 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col xs={6}>
+                        <Col xs={12} md={6}>
                             <Form.Group>
                                 <Form.Label>時間:</Form.Label>
                                 <Form.Control
@@ -3940,7 +3938,7 @@ const EFormComponent = () => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col xs={6}>
+                        <Col xs={12} md={6} style={{ marginBottom: '1rem' }}>
                             <Form.Group>
                                 <Form.Label>工地:</Form.Label>
                                 <Form.Control
@@ -3955,112 +3953,105 @@ const EFormComponent = () => {
                         <Col xs={12}>
                             <Form.Label>(結果: Y=是 / N=否 / NA=不適用)</Form.Label>
                         </Col>
-                    </Row>
-                    <Row>
                         <Col xs={12}>
-                            <Table className="table">
-                                <tbody>
-                                    {tab5List.map((rows, index) => {
-                                        return rows?.list.map((item, index) => {
-                                            return (
-                                                <React.Fragment key={item.label + index}>
-                                                    {index === 0 ? <tr >
-                                                        <td colSpan={5}>
-                                                            {rows.title}
-                                                        </td>
-                                                    </tr> : null}
-                                                    <tr >
-                                                        <td>{item?.label}</td>
-                                                        <td>
+                            <Row>
+                                {tab5List.map((rows, index) => {
+                                    return rows?.list.map((item, index) => {
+                                        return (
+                                            <React.Fragment key={item.label + index}>
+                                                {index === 0 ?
+                                                    <Col xs={12} style={{ marginTop: '1rem' }}>
+                                                        {rows.title}
+                                                    </Col>
+                                                    : null}
+                                                <Col xs={7} md={8} style={{ margin: '0.5rem 0' }}>{item?.label}</Col>
+                                                <Col xs={5} md={4} style={{ margin: '0.5rem 0' }}>
+                                                    <Row>
+                                                        <Col>
                                                             <Form.Check
                                                                 type="radio"
                                                                 label="Y"
                                                                 value="Y"
                                                                 {...registerTab5(`${rows.field}.${item?.value}`)}
                                                             />
-                                                        </td>
-                                                        <td>
+                                                        </Col>
+                                                        <Col>
                                                             <Form.Check
                                                                 type="radio"
                                                                 label="N"
                                                                 value="N"
                                                                 {...registerTab5(`${rows.field}.${item?.value}`)}
                                                             />
-                                                        </td>
-                                                        <td>
+                                                        </Col>
+                                                        <Col>
                                                             <Form.Check
                                                                 type="radio"
                                                                 label="NA"
                                                                 value="NA"
                                                                 {...registerTab5(`${rows.field}.${item?.value}`)}
                                                             />
-                                                        </td>
-                                                    </tr>
-                                                </React.Fragment>
-                                            )
-                                        })
-                                    })}
-                                </tbody>
-                            </Table>
+                                                        </Col>
+                                                    </Row>
+                                                </Col>
+                                            </React.Fragment>
+                                        )
+                                    })
+                                })}
+                            </Row>
                         </Col>
-                        <Row>
-                            <Col xs={6}>
-                                <Form.Label>合格人員姓名及簽署:</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    {...registerTab5("qualifiedPersonnel")}
-                                />
-                            </Col>
-                            <Col xs={6}>
-                                <Form.Control
-                                    as={() => <Controller
-                                        name='qualifiedPersonnelSig'
-                                        control={controlTab5}
-                                        render={({ field }) => {
-                                            return !getValuesTab5(field?.name) ? <Col
-                                                style={{
-                                                    width: "200px",
-                                                    height: "100px",
-                                                    border: "1px solid black",
-                                                }}
-                                                onClick={() => openSignatureModal({ field })}
-                                            ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab5(field?.name)} /></Col>
-                                        }}
-                                    />}
-                                />
-                            </Col>
-                        </Row>
-
+                        <Col xs={12} sm={6} md={8} style={{ marginTop: '1rem' }}>
+                            <Form.Label>合格人員姓名及簽署:</Form.Label>
+                            <Form.Control
+                                type="text"
+                                {...registerTab5("qualifiedPersonnel")}
+                            />
+                        </Col>
+                        <Col xs={12} sm={6} md={4} style={{ marginTop: '1rem', marginBottom: '1rem' }}>
+                            <Form.Control
+                                as={() => <Controller
+                                    name='qualifiedPersonnelSig'
+                                    control={controlTab5}
+                                    render={({ field }) => {
+                                        return !getValuesTab5(field?.name) ? <Col
+                                            style={{
+                                                width: "100%",
+                                                height: "100px",
+                                                border: "1px solid black",
+                                            }}
+                                            onClick={() => openSignatureModal({ field })}
+                                        ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab5(field?.name)} /></Col>
+                                    }}
+                                />}
+                            />
+                        </Col>
                         {/*
                             工務督察姓名及簽署(*)
                         */}
-                        <Row>
-                            <Col xs={6}>
-                                <Form.Label>工務督察姓名及簽署:</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    {...registerTab5("inspector")}
-                                />
-                            </Col>
-                            <Col xs={6}>
-                                <Form.Control
-                                    as={() => <Controller
-                                        name='inspectorSig'
-                                        control={controlTab5}
-                                        render={({ field }) => {
-                                            return !getValuesTab5(field?.name) ? <Col
-                                                style={{
-                                                    width: "200px",
-                                                    height: "100px",
-                                                    border: "1px solid black",
-                                                }}
-                                                onClick={() => openSignatureModal({ field })}
-                                            ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab5(field?.name)} /></Col>
-                                        }}
-                                    />}
-                                />
-                            </Col>
-                        </Row>
+                        <Col xs={12} sm={6} md={8}>
+                            <Form.Label>工務督察姓名及簽署:</Form.Label>
+                            <Form.Control
+                                type="text"
+                                {...registerTab5("inspector")}
+                            />
+                        </Col>
+                        <Col xs={12} sm={6} md={4} style={{ marginTop: '1rem', marginBottom: '1rem' }}>
+                            <Form.Control
+                                as={() => <Controller
+                                    name='inspectorSig'
+                                    control={controlTab5}
+                                    render={({ field }) => {
+                                        return !getValuesTab5(field?.name) ? <Col
+                                            style={{
+                                                width: "100%",
+                                                height: "100px",
+                                                border: "1px solid black",
+                                            }}
+                                            onClick={() => openSignatureModal({ field })}
+                                        ></Col> : <Col onClick={() => openSignatureModal({ field })} className="signatureImg"> <img src={getValuesTab5(field?.name)} /></Col>
+                                    }}
+                                />}
+                            />
+                        </Col>
 
                         <Col xs={12}>
                             <Form.Label>備註:*如項目的檢查結果為"N",合格人員需先修正及在此記錄詳情方可繼續。</Form.Label>

@@ -27,7 +27,8 @@ const Header = () => {
             style={{
               fontWeight: "bold",
               fontSize: "26px",
-              margin: "0"
+              margin: "0",
+              textWrap: "wrap"
             }}
           >
             [ATAL]合格人員 – 工作前安全會議
